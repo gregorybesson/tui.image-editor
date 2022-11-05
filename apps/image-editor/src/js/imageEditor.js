@@ -178,8 +178,14 @@ class ImageEditor {
      * @type {Ui}
      */
     if (options.includeUI) {
-      const UIOption = options.includeUI;
-      UIOption.usageStatistics = options.usageStatistics;
+      let UIOption = options.includeUI;
+      UIOption = extend(
+        {
+          usageStatistics: options.usageStatistics,
+          settings: {},
+        },
+        UIOption
+      );
 
       this.ui = new UI(wrapper, UIOption, this.getActions());
       options = this.ui.setUiDefaultSelectionStyle(options);

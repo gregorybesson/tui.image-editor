@@ -2,6 +2,7 @@ import Colorpicker from '@/ui/tools/colorpicker';
 import Range from '@/ui/tools/range';
 import Submenu from '@/ui/submenuBase';
 import templateHtml from '@/ui/template/submenu/draw';
+import extend from 'tui-code-snippet/object/extend';
 import { assignmentForDestroy, getRgb } from '@/util';
 import { defaultDrawRangeValues, eventNames, selectorNames } from '@/consts';
 
@@ -13,7 +14,7 @@ const DRAW_OPACITY = 0.7;
  * @ignore
  */
 class Draw extends Submenu {
-  constructor(subMenuElement, { locale, makeSvgIcon, menuBarPosition, usageStatistics }) {
+  constructor(subMenuElement, { locale, makeSvgIcon, menuBarPosition, usageStatistics, settings }) {
     super(subMenuElement, {
       locale,
       name: 'draw',
@@ -23,10 +24,11 @@ class Draw extends Submenu {
       usageStatistics,
     });
 
+    const rangeValues = extend(defaultDrawRangeValues, settings.rangeValues);
     this._els = {
       lineSelectButton: this.selector('.tie-draw-line-select-button'),
       drawColorPicker: new Colorpicker(this.selector('.tie-draw-color'), {
-        defaultColor: '#00a9ff',
+        defaultColor: settings.color ?? '#00a9ff',
         toggleDirection: this.toggleDirection,
         usageStatistics: this.usageStatistics,
       }),
@@ -35,13 +37,15 @@ class Draw extends Submenu {
           slider: this.selector('.tie-draw-range'),
           input: this.selector('.tie-draw-range-value'),
         },
-        defaultDrawRangeValues
+        rangeValues
       ),
     };
 
     this.type = null;
     this.color = this._els.drawColorPicker.color;
     this.width = this._els.drawRange.value;
+    this.arrowType = settings.arrowType ?? {};
+    this.arrow = false;
 
     this.colorPickerInputBox = this._els.drawColorPicker.colorpickerElement.querySelector(
       selectorNames.COLOR_PICKER_INPUT_BOX
@@ -108,6 +112,7 @@ class Draw extends Submenu {
     this.actions.setDrawMode(this.type, {
       width: this.width,
       color: getRgb(this.color, DRAW_OPACITY),
+      arrowType: this.type === 'arrow' ? this.arrowType : {},
     });
   }
 
@@ -120,6 +125,7 @@ class Draw extends Submenu {
     this.actions.changeSelectableAll(true);
     this._els.lineSelectButton.classList.remove('free');
     this._els.lineSelectButton.classList.remove('line');
+    this._els.lineSelectButton.classList.remove('arrow');
   }
 
   /**
@@ -139,7 +145,7 @@ class Draw extends Submenu {
   _changeDrawType(event) {
     const button = event.target.closest('.tui-image-editor-button');
     if (button) {
-      const lineType = this.getButtonType(button, ['free', 'line']);
+      const lineType = this.getButtonType(button, ['free', 'line', 'arrow']);
       this.actions.discardSelection();
 
       if (this.type === lineType) {

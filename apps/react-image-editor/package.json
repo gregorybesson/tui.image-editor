@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "fabric": "^4.2.0",
-    "tui-image-editor": "^3.15.2"
+    "tui-image-editor": "github:gregorybesson/tui.image-editor/apps/image-editor"
   }
 }

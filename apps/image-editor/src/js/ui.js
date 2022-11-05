@@ -305,6 +305,7 @@ class Ui {
         locale: this._locale,
         makeSvgIcon: this.theme.makeMenSvgIconSet.bind(this.theme),
         menuBarPosition: this.options.menuBarPosition,
+        settings: this.options.settings[menuName] ?? {},
         usageStatistics: this.options.usageStatistics,
       });
     });
