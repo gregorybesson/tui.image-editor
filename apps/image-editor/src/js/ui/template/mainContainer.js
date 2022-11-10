@@ -23,7 +23,7 @@ export default ({
             </div>
         </div>
         <div class="tui-image-editor-main">
-            <div class="tui-image-editor-submenu">
+            <div class="tui-image-editor-submenu" draggable="true">
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
             <div class="tui-image-editor-wrap">
