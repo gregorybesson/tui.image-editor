@@ -47704,13 +47704,16 @@ var Ui = /*#__PURE__*/function () {
 
       this._mainElement.addEventListener('drop', function (ev) {
         ev.preventDefault();
-        var elt = document.getElementById('tui-image-editor-submenu'); // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
+        var elt = document.getElementById('tui-image-editor-submenu');
+        var refControls = document.querySelector('.tui-image-editor-controls');
+        var refy = refControls.getBoundingClientRect().bottom;
+        var refx = refControls.getBoundingClientRect().left; // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
         // const shiftY = ev.clientY - elt.getBoundingClientRect().top;
 
         console.log('x', ev.dataTransfer.getData('posx'));
         console.log('y', ev.dataTransfer.getData('posy'));
-        var shiftX = ev.pageX;
-        var shiftY = ev.pageY;
+        var shiftX = ev.pageX - refx - ev.dataTransfer.getData('posx');
+        var shiftY = ev.pageY - refy - ev.dataTransfer.getData('posy');
         console.log('shiftX, shiftY', shiftX, shiftY);
         elt.style.left = "".concat(shiftX, "px");
         elt.style.top = "".concat(shiftY, "px");
@@ -47723,8 +47726,9 @@ var Ui = /*#__PURE__*/function () {
 
       this._subMenuElement.addEventListener('dragstart', function (ev) {
         console.log('drag');
-        ev.dataTransfer.setData('posx', ev.clientX - ev.dataTransfer.getData('posx'));
-        ev.dataTransfer.setData('posy', ev.clientY - ev.dataTransfer.getData('posy'));
+        var elt = document.querySelector('.tui-image-editor-submenu');
+        ev.dataTransfer.setData('posx', ev.clientX - elt.getBoundingClientRect().left);
+        ev.dataTransfer.setData('posy', ev.clientY - elt.getBoundingClientRect().top);
       });
 
       forEach_default()(this.options.menu, function (menuName) {
