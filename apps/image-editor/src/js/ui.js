@@ -312,8 +312,8 @@ class Ui {
 
     this._subMenuElement.addEventListener('dragstart', function (ev) {
       console.log('drag');
-      ev.dataTransfer.setData('posx', ev.clientX - ev.target.getBoundingClientRect().left);
-      ev.dataTransfer.setData('posy', ev.clientY - ev.target.getBoundingClientRect().top);
+      ev.dataTransfer.setData('posx', ev.clientX - ev.dataTransfer.getData('posx'));
+      ev.dataTransfer.setData('posy', ev.clientY - ev.dataTransfer.getData('posy'));
     });
 
     forEach(this.options.menu, (menuName) => {
