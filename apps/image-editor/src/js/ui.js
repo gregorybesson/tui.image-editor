@@ -293,8 +293,10 @@ class Ui {
     this._mainElement.addEventListener('drop', function (ev) {
       ev.preventDefault();
       console.log('drop');
-      const data = ev.dataTransfer.getData('text');
-      ev.target.appendChild(document.getElementById(data));
+      const shiftX = ev.clientX;
+      const shiftY = ev.clientY;
+      this._subMenuElement.style.left = shiftX;
+      this._subMenuElement.style.top = shiftY;
     });
 
     this._mainElement.addEventListener('dragover', function (ev) {
