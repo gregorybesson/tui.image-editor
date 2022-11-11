@@ -290,6 +290,23 @@ class Ui {
    * @private
    */
   _makeSubMenu() {
+    this._mainElement.addEventListener('drop', function (ev) {
+      ev.preventDefault();
+      console.log('drop');
+      const data = ev.dataTransfer.getData('text');
+      ev.target.appendChild(document.getElementById(data));
+    });
+
+    this._mainElement.addEventListener('dragover', function (ev) {
+      console.log('allowDrop');
+      ev.preventDefault();
+    });
+
+    this._subMenuElement.addEventListener('dragstart', function (ev) {
+      console.log('drag');
+      ev.dataTransfer.setData('text', ev.target.id);
+    });
+
     forEach(this.options.menu, (menuName) => {
       const SubComponentClass =
         SUB_UI_COMPONENT[menuName.replace(/^[a-z]/, ($0) => $0.toUpperCase())];

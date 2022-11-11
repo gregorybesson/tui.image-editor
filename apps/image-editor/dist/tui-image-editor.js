@@ -42563,7 +42563,7 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       submenuStyle = _ref.submenuStyle;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <script>\n        function allowDrop(ev) {\n            console.log('allowDrop');\n            \n            ev.preventDefault();\n        }\n        function drag(ev) {\n            console.log('drag');\n            ev.dataTransfer.setData(\"text\", ev.target.id);\n        }\n\n        function drop(ev) {\n            ev.preventDefault();\n            console.log('drop');\n            \n            var data = ev.dataTransfer.getData(\"text\");\n            ev.target.appendChild(document.getElementById(data));\n        }\n    </script>\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\" ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" ondragstart=\"drag(event)\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
 });
 ;// CONCATENATED MODULE: ./src/js/ui/template/controls.js
 
@@ -42576,7 +42576,7 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       menuBarPosition = _ref.menuBarPosition;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = "\n    <ul class=\"tui-image-editor-help-menu ".concat(getHelpMenuBarPosition(menuBarPosition), "\"></ul>\n    <div class=\"tui-image-editor-controls\">\n        <!--div class=\"tui-image-editor-controls-logo\">\n            <img src=\"")).call(_context5, biImage, "\" />\n        </div-->\n        <ul class=\"tui-image-editor-menu\" style=\"text-align: left\"></ul>\n\n        <div class=\"tui-image-editor-controls-buttons\">\n            <div style=\"")).call(_context4, loadButtonStyle, "\">\n                ")).call(_context3, locale.localize('Load'), "\n                <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n            </div>\n            <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context2, downloadButtonStyle, "\">\n                ")).call(_context, locale.localize('Download'), "\n            </button>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = "\n    <ul class=\"tui-image-editor-help-menu ".concat(getHelpMenuBarPosition(menuBarPosition), "\"></ul>\n    <div class=\"tui-image-editor-controls\">\n        <!--div class=\"tui-image-editor-controls-logo\">\n            <img src=\"")).call(_context5, biImage, "\" />\n        </div-->\n        <ul class=\"tui-image-editor-menu\" style=\"text-align: left\"></ul>\n\n        <div class=\"tui-image-editor-controls-buttons\">\n            <div style=\"")).call(_context4, loadButtonStyle, "\">\n                ")).call(_context3, locale.localize('Jira'), "\n                <--input type=\"file\" class=\"tui-image-editor-load-btn\" /-->\n            </div>\n            <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context2, downloadButtonStyle, "\">\n                ")).call(_context, locale.localize('Download'), "\n            </button>\n        </div>\n    </div>\n");
 });
 // EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/map.js
 var instance_map = __webpack_require__(899);
@@ -47701,6 +47701,23 @@ var Ui = /*#__PURE__*/function () {
     key: "_makeSubMenu",
     value: function _makeSubMenu() {
       var _this = this;
+
+      this._mainElement.addEventListener('drop', function (ev) {
+        ev.preventDefault();
+        console.log('drop');
+        var data = ev.dataTransfer.getData('text');
+        ev.target.appendChild(document.getElementById(data));
+      });
+
+      this._mainElement.addEventListener('dragover', function (ev) {
+        console.log('allowDrop');
+        ev.preventDefault();
+      });
+
+      this._subMenuElement.addEventListener('dragstart', function (ev) {
+        console.log('drag');
+        ev.dataTransfer.setData('text', ev.target.id);
+      });
 
       forEach_default()(this.options.menu, function (menuName) {
         var _context, _this$options$setting;

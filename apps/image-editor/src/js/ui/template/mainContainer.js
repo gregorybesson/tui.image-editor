@@ -7,25 +7,6 @@ export default ({
   downloadButtonStyle,
   submenuStyle,
 }) => `
-    <script>
-        function allowDrop(ev) {
-            console.log('allowDrop');
-            
-            ev.preventDefault();
-        }
-        function drag(ev) {
-            console.log('drag');
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
-
-        function drop(ev) {
-            ev.preventDefault();
-            console.log('drop');
-            
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
-    </script>
     <div class="tui-image-editor-main-container" style="${commonStyle}">
         <div class="tui-image-editor-header" style="${headerStyle}">
             <div class="tui-image-editor-header-logo">
@@ -41,8 +22,8 @@ export default ({
                 </button>
             </div>
         </div>
-        <div class="tui-image-editor-main" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="tui-image-editor-submenu" draggable="true" ondragstart="drag(event)" style="width: 250px;">
+        <div class="tui-image-editor-main">
+            <div class="tui-image-editor-submenu" draggable="true" style="width: 250px;">
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
             <div class="tui-image-editor-wrap">
