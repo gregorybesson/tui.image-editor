@@ -163,6 +163,13 @@ export default {
             w.document.body.innerHTML = `<img src='${dataURL}'>`;
           }
         },
+        clipboard: async () => {
+          const dataURL = this.toDataURL();
+          const blob = base64ToBlob(dataURL);
+          const { ClipboardItem } = window;
+          await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+          console.log('Image copied.');
+        },
         history: (event) => {
           this.ui.toggleHistoryMenu(event);
         },

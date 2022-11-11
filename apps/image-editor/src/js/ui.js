@@ -307,7 +307,6 @@ class Ui {
     });
 
     this._subMenuElement.addEventListener('dragstart', function (ev) {
-      console.log('drag', ev.target);
       const elt = document.querySelector('.tui-image-editor-submenu');
       ev.dataTransfer.setData('posx', ev.clientX - elt.getBoundingClientRect().left);
       ev.dataTransfer.setData('posy', ev.clientY - elt.getBoundingClientRect().top);
@@ -413,8 +412,10 @@ class Ui {
     this._menuBarElement = selector('.tui-image-editor-menu');
     this._subMenuElement = selector('.tui-image-editor-submenu');
     this._buttonElements = {
+      jira: this._selectedElement.querySelectorAll('.tui-image-editor-jira-btn'),
       download: this._selectedElement.querySelectorAll('.tui-image-editor-download-btn'),
-      load: this._selectedElement.querySelectorAll('.tui-image-editor-load-btn'),
+      clipboard: this._selectedElement.querySelectorAll('.tui-image-editor-clipboard-btn'),
+      print: this._selectedElement.querySelectorAll('.tui-image-editor-print-btn'),
     };
 
     this._addHelpMenus();
@@ -612,6 +613,23 @@ class Ui {
   }
 
   /**
+   * Add clipboard event
+   * @private
+   */
+  _addClipboardEvent() {
+    this.eventHandler.clipboard = () => this._actions.main.clipboard();
+    forEach(this._buttonElements.clipboard, (element) => {
+      element.addEventListener('click', this.eventHandler.clipboard);
+    });
+  }
+
+  _removeClipboardEvent() {
+    forEach(this._buttonElements.clipboard, (element) => {
+      element.removeEventListener('click', this.eventHandler.clipboard);
+    });
+  }
+
+  /**
    * Add load event
    * @private
    */
@@ -701,6 +719,7 @@ class Ui {
 
     this._addHelpActionEvent();
     this._addDownloadEvent();
+    this._addClipboardEvent();
     this._addMenuEvent();
     this._initMenu();
     this._historyMenu.addEvent(this._actions.history);
@@ -714,6 +733,7 @@ class Ui {
   _removeUiEvent() {
     this._removeHelpActionEvent();
     this._removeDownloadEvent();
+    this._removeClipboardEvent();
     this._removeLoadEvent();
     this._removeMainMenuEvent();
     this._historyMenu.removeEvent();
