@@ -313,6 +313,18 @@ class Ui {
       ev.dataTransfer.setData('posy', ev.clientY - elt.getBoundingClientRect().top);
     });
 
+    this._subMenuElement.addEventListener('dragover', function (ev) {
+      ev.stopPropagation();
+    });
+
+    const ranges = document.querySelectorAll('.tui-image-editor-range');
+    for (let i = 0; i < ranges.length; i = i + 1) {
+      ranges[i].addEventListener('dragstart', function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      });
+    }
+
     forEach(this.options.menu, (menuName) => {
       const SubComponentClass =
         SUB_UI_COMPONENT[menuName.replace(/^[a-z]/, ($0) => $0.toUpperCase())];
