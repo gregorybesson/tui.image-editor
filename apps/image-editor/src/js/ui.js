@@ -296,20 +296,13 @@ class Ui {
       const refControls = document.querySelector('.tui-image-editor-controls');
       const refy = refControls.getBoundingClientRect().bottom;
       const refx = refControls.getBoundingClientRect().left;
-      // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
-      // const shiftY = ev.clientY - elt.getBoundingClientRect().top;
-      console.log('x', ev.dataTransfer.getData('posx'));
-      console.log('y', ev.dataTransfer.getData('posy'));
       const shiftX = ev.pageX - refx - ev.dataTransfer.getData('posx');
       const shiftY = ev.pageY - refy - ev.dataTransfer.getData('posy');
-
-      console.log('shiftX, shiftY', shiftX, shiftY);
       elt.style.left = `${shiftX}px`;
       elt.style.top = `${shiftY}px`;
     });
 
     this._mainElement.addEventListener('dragover', function (ev) {
-      console.log('allowDrop');
       ev.preventDefault();
     });
 

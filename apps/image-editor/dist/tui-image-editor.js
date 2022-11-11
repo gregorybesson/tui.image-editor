@@ -47707,20 +47707,14 @@ var Ui = /*#__PURE__*/function () {
         var elt = document.querySelector('.tui-image-editor-submenu');
         var refControls = document.querySelector('.tui-image-editor-controls');
         var refy = refControls.getBoundingClientRect().bottom;
-        var refx = refControls.getBoundingClientRect().left; // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
-        // const shiftY = ev.clientY - elt.getBoundingClientRect().top;
-
-        console.log('x', ev.dataTransfer.getData('posx'));
-        console.log('y', ev.dataTransfer.getData('posy'));
+        var refx = refControls.getBoundingClientRect().left;
         var shiftX = ev.pageX - refx - ev.dataTransfer.getData('posx');
         var shiftY = ev.pageY - refy - ev.dataTransfer.getData('posy');
-        console.log('shiftX, shiftY', shiftX, shiftY);
         elt.style.left = "".concat(shiftX, "px");
         elt.style.top = "".concat(shiftY, "px");
       });
 
       this._mainElement.addEventListener('dragover', function (ev) {
-        console.log('allowDrop');
         ev.preventDefault();
       });
 
