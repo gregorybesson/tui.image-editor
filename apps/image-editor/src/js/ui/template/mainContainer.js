@@ -26,6 +26,9 @@ export default ({
             <div class="tui-image-editor-submenu" draggable="true" style="width: 250px;">
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
+            <div class="tui-image-editor-jira">
+                GrG was here
+            </div>
             <div class="tui-image-editor-wrap">
                 <div class="tui-image-editor-size-wrap">
                     <div class="tui-image-editor-align-wrap">
