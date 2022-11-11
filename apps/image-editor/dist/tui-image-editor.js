@@ -47702,32 +47702,29 @@ var Ui = /*#__PURE__*/function () {
     value: function _makeSubMenu() {
       var _this = this;
 
-      this._subMenuElement.addEventListener('mousedown', function (ev) {
-        var elt = document.getElementById('tui-image-editor-submenu');
-        var shiftX = ev.clientX - elt.getBoundingClientRect().left;
-        var shiftY = ev.clientY - elt.getBoundingClientRect().top;
-        moveAt(ev.pageX, ev.pageY);
+      this._mainElement.addEventListener('drop', function (ev) {
+        ev.preventDefault();
+        var elt = document.getElementById('tui-image-editor-submenu'); // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
+        // const shiftY = ev.clientY - elt.getBoundingClientRect().top;
 
-        function moveAt(pageX, pageY) {
-          elt.style.left = "".concat(pageX - shiftX, "px");
-          elt.style.top = "".concat(pageY - shiftY, "px");
-        }
-
-        function onMouseMove(event) {
-          moveAt(event.pageX, event.pageY);
-        }
-
-        document.addEventListener('mousemove', onMouseMove);
-
-        elt.onmouseup = function () {
-          document.removeEventListener('mousemove', onMouseMove);
-          elt.onmouseup = null;
-        };
+        console.log('x', ev.dataTransfer.getData('posx'));
+        console.log('y', ev.dataTransfer.getData('posy'));
+        var shiftX = ev.pageX;
+        var shiftY = ev.pageY;
+        console.log('shiftX, shiftY', shiftX, shiftY);
+        elt.style.left = "".concat(shiftX, "px");
+        elt.style.top = "".concat(shiftY, "px");
       });
 
-      this._subMenuElement.addEventListener('dragstart', function () {
+      this._mainElement.addEventListener('dragover', function (ev) {
+        console.log('allowDrop');
+        ev.preventDefault();
+      });
+
+      this._subMenuElement.addEventListener('dragstart', function (ev) {
         console.log('drag');
-        return false;
+        ev.dataTransfer.setData('posx', ev.clientX - ev.target.getBoundingClientRect().left);
+        ev.dataTransfer.setData('posy', ev.clientY - ev.target.getBoundingClientRect().top);
       });
 
       forEach_default()(this.options.menu, function (menuName) {

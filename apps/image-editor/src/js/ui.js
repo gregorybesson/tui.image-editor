@@ -290,29 +290,30 @@ class Ui {
    * @private
    */
   _makeSubMenu() {
-    this._subMenuElement.addEventListener('mousedown', function (ev) {
+    this._mainElement.addEventListener('drop', function (ev) {
+      ev.preventDefault();
       const elt = document.getElementById('tui-image-editor-submenu');
-      const shiftX = ev.clientX - elt.getBoundingClientRect().left;
-      const shiftY = ev.clientY - elt.getBoundingClientRect().top;
-      moveAt(ev.pageX, ev.pageY);
-      function moveAt(pageX, pageY) {
-        elt.style.left = `${pageX - shiftX}px`;
-        elt.style.top = `${pageY - shiftY}px`;
-      }
-      function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
-      }
-      document.addEventListener('mousemove', onMouseMove);
-      elt.onmouseup = function () {
-        document.removeEventListener('mousemove', onMouseMove);
-        elt.onmouseup = null;
-      };
+      // const shiftX = ev.clientX - elt.getBoundingClientRect().left;
+      // const shiftY = ev.clientY - elt.getBoundingClientRect().top;
+      console.log('x', ev.dataTransfer.getData('posx'));
+      console.log('y', ev.dataTransfer.getData('posy'));
+      const shiftX = ev.pageX;
+      const shiftY = ev.pageY;
+
+      console.log('shiftX, shiftY', shiftX, shiftY);
+      elt.style.left = `${shiftX}px`;
+      elt.style.top = `${shiftY}px`;
     });
 
-    this._subMenuElement.addEventListener('dragstart', function () {
-      console.log('drag');
+    this._mainElement.addEventListener('dragover', function (ev) {
+      console.log('allowDrop');
+      ev.preventDefault();
+    });
 
-      return false;
+    this._subMenuElement.addEventListener('dragstart', function (ev) {
+      console.log('drag');
+      ev.dataTransfer.setData('posx', ev.clientX - ev.target.getBoundingClientRect().left);
+      ev.dataTransfer.setData('posy', ev.clientY - ev.target.getBoundingClientRect().top);
     });
 
     forEach(this.options.menu, (menuName) => {
