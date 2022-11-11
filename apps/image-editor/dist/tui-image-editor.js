@@ -47708,8 +47708,8 @@ var Ui = /*#__PURE__*/function () {
         var shiftX = ev.clientX;
         var shiftY = ev.clientY;
         console.log('shiftX, shiftY', shiftX, shiftY);
-        document.getElementById('tui-image-editor-submenu').style.left = shiftX;
-        document.getElementById('tui-image-editor-submenu').style.top = shiftY;
+        document.getElementById('tui-image-editor-submenu').style.left = "".concat(shiftX, "px");
+        document.getElementById('tui-image-editor-submenu').style.top = "".concat(shiftY, "px");
       });
 
       this._mainElement.addEventListener('dragover', function (ev) {

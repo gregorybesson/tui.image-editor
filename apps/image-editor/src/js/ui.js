@@ -296,8 +296,8 @@ class Ui {
       const shiftX = ev.clientX;
       const shiftY = ev.clientY;
       console.log('shiftX, shiftY', shiftX, shiftY);
-      document.getElementById('tui-image-editor-submenu').style.left = shiftX;
-      document.getElementById('tui-image-editor-submenu').style.top = shiftY;
+      document.getElementById('tui-image-editor-submenu').style.left = `${shiftX}px`;
+      document.getElementById('tui-image-editor-submenu').style.top = `${shiftY}px`;
     });
 
     this._mainElement.addEventListener('dragover', function (ev) {
