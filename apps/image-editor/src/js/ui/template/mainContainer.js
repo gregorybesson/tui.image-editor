@@ -9,14 +9,19 @@ export default ({
 }) => `
     <script>
         function allowDrop(ev) {
+            console.log('allowDrop');
+            
             ev.preventDefault();
         }
         function drag(ev) {
+            console.log('drag');
             ev.dataTransfer.setData("text", ev.target.id);
         }
 
         function drop(ev) {
             ev.preventDefault();
+            console.log('drop');
+            
             var data = ev.dataTransfer.getData("text");
             ev.target.appendChild(document.getElementById(data));
         }
