@@ -292,7 +292,7 @@ class Ui {
   _makeSubMenu() {
     this._mainElement.addEventListener('drop', function (ev) {
       ev.preventDefault();
-      const elt = document.getElementById('tui-image-editor-submenu');
+      const elt = document.querySelector('.tui-image-editor-submenu');
       const refControls = document.querySelector('.tui-image-editor-controls');
       const refy = refControls.getBoundingClientRect().bottom;
       const refx = refControls.getBoundingClientRect().left;
@@ -314,7 +314,7 @@ class Ui {
     });
 
     this._subMenuElement.addEventListener('dragstart', function (ev) {
-      console.log('drag');
+      console.log('drag', ev.target);
       const elt = document.querySelector('.tui-image-editor-submenu');
       ev.dataTransfer.setData('posx', ev.clientX - elt.getBoundingClientRect().left);
       ev.dataTransfer.setData('posy', ev.clientY - elt.getBoundingClientRect().top);
