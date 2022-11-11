@@ -3,10 +3,10 @@ import { getHelpMenuBarPosition } from '@/util';
 export default ({ locale, biImage, loadButtonStyle, downloadButtonStyle, menuBarPosition }) => `
     <ul class="tui-image-editor-help-menu ${getHelpMenuBarPosition(menuBarPosition)}"></ul>
     <div class="tui-image-editor-controls">
-        <div class="tui-image-editor-controls-logo">
+        <!--div class="tui-image-editor-controls-logo">
             <img src="${biImage}" />
-        </div>
-        <ul class="tui-image-editor-menu"></ul>
+        </div-->
+        <ul class="tui-image-editor-menu" style="text-align: left"></ul>
 
         <div class="tui-image-editor-controls-buttons">
             <div style="${loadButtonStyle}">
