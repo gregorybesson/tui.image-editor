@@ -47704,12 +47704,12 @@ var Ui = /*#__PURE__*/function () {
 
       this._mainElement.addEventListener('drop', function (ev) {
         ev.preventDefault();
-        console.log('drop');
-        var shiftX = ev.clientX;
-        var shiftY = ev.clientY;
+        var elt = document.getElementById('tui-image-editor-submenu');
+        var shiftX = ev.clientX - elt.getBoundingClientRect().left;
+        var shiftY = ev.clientY - elt.getBoundingClientRect().top;
         console.log('shiftX, shiftY', shiftX, shiftY);
-        document.getElementById('tui-image-editor-submenu').style.left = "".concat(shiftX, "px");
-        document.getElementById('tui-image-editor-submenu').style.top = "".concat(shiftY, "px");
+        elt.style.left = "".concat(shiftX, "px");
+        elt.style.top = "".concat(shiftY, "px");
       });
 
       this._mainElement.addEventListener('dragover', function (ev) {

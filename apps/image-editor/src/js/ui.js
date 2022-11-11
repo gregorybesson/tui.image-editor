@@ -292,12 +292,12 @@ class Ui {
   _makeSubMenu() {
     this._mainElement.addEventListener('drop', function (ev) {
       ev.preventDefault();
-      console.log('drop');
-      const shiftX = ev.clientX;
-      const shiftY = ev.clientY;
+      const elt = document.getElementById('tui-image-editor-submenu');
+      const shiftX = ev.clientX - elt.getBoundingClientRect().left;
+      const shiftY = ev.clientY - elt.getBoundingClientRect().top;
       console.log('shiftX, shiftY', shiftX, shiftY);
-      document.getElementById('tui-image-editor-submenu').style.left = `${shiftX}px`;
-      document.getElementById('tui-image-editor-submenu').style.top = `${shiftY}px`;
+      elt.style.left = `${shiftX}px`;
+      elt.style.top = `${shiftY}px`;
     });
 
     this._mainElement.addEventListener('dragover', function (ev) {
