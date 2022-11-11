@@ -51011,7 +51011,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
         var imageName = _this.getImageName();
 
-        var blob, type, w;
+        var blob, type;
 
         if (isSupportFileApi() && window.saveAs) {
           blob = base64ToBlob(dataURL);
@@ -51023,8 +51023,10 @@ var ImageTracer = /*#__PURE__*/function () {
 
           saveAs(blob, imageName); // eslint-disable-line
         } else {
-          w = window.open();
-          w.document.body.innerHTML = "<img src='".concat(dataURL, "'>");
+          var link = document.createElement('a');
+          link.download = 'screenshot.png';
+          link.href = dataURL;
+          link.click();
         }
       },
       clipboard: function () {
