@@ -153,6 +153,7 @@ export default {
             jiraLogin: '',
             jiraPassword: '',
             jiraProjects: [],
+            jiraSelectedProject: '',
           });
           console.log('items', items);
           const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
@@ -165,8 +166,20 @@ export default {
               Authorization: user,
             },
           });
-          const json = await response.json();
-          console.log('json', json);
+          const projects = await response.json();
+          const jiraSelect = document.getElementById('jiraProjects');
+          jiraSelect.innerHTML = '';
+          projects.forEach((project) => {
+            const option = document.createElement('option');
+            option.value = project.key;
+            option.text = project.name;
+            if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
+              option.selected = true;
+            }
+            document.getElementById('jiraProjects').appendChild(option);
+          });
+
+          console.log('projects', projects);
         },
         download: () => {
           const dataURL = this.toDataURL();
