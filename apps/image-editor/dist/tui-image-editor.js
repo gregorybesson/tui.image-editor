@@ -43410,14 +43410,14 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
 
 
 /* harmony default export */ var controls = (function (_ref) {
-  var _context, _context2, _context3, _context4, _context5, _context6, _context7, _context8, _context9;
+  var _context, _context2, _context3, _context4, _context5, _context6, _context7;
 
   var locale = _ref.locale,
       biImage = _ref.biImage,
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       menuBarPosition = _ref.menuBarPosition;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = concat_default()(_context8 = concat_default()(_context9 = "\n    <ul class=\"tui-image-editor-help-menu ".concat(getHelpMenuBarPosition(menuBarPosition), "\"></ul>\n    <div class=\"tui-image-editor-controls\">\n        <!--div class=\"tui-image-editor-controls-logo\">\n            <img src=\"")).call(_context9, biImage, "\" />\n        </div-->\n        <ul class=\"tui-image-editor-menu\" style=\"text-align: left\"></ul>\n\n        <div class=\"tui-image-editor-controls-buttons\">\n            <button class=\"tui-image-editor-clipboard-btn\" style=\"")).call(_context8, loadButtonStyle, "\">\n                ")).call(_context7, locale.localize('Jira'), "\n            </button>\n            <button class=\"tui-image-editor-clipboard-btn\" style=\"")).call(_context6, downloadButtonStyle, "\">\n                ")).call(_context5, locale.localize('Copy to clipboard'), "\n            </button>\n            <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context4, downloadButtonStyle, "\">\n                ")).call(_context3, locale.localize('Download'), "\n            </button>\n            <button class=\"tui-image-editor-print-btn\" style=\"")).call(_context2, downloadButtonStyle, "\">\n                ")).call(_context, locale.localize('Print'), "\n            </button>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <ul class=\"tui-image-editor-help-menu ".concat(getHelpMenuBarPosition(menuBarPosition), "\"></ul>\n    <div class=\"tui-image-editor-controls\">\n        <!--div class=\"tui-image-editor-controls-logo\">\n            <img src=\"")).call(_context7, biImage, "\" />\n        </div-->\n        <ul class=\"tui-image-editor-menu\" style=\"text-align: left\"></ul>\n\n        <div class=\"tui-image-editor-controls-buttons\">\n            <button class=\"tui-image-editor-jira-btn\" style=\"")).call(_context6, loadButtonStyle, "\">\n                ")).call(_context5, locale.localize('Jira'), "\n            </button>\n            <button class=\"tui-image-editor-clipboard-btn\" style=\"")).call(_context4, downloadButtonStyle, "\">\n                ")).call(_context3, locale.localize('Copy to clipboard'), "\n            </button>\n            <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context2, downloadButtonStyle, "\">\n                ")).call(_context, locale.localize('Download'), "\n            </button>\n        </div>\n    </div>\n");
 });
 // EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/map.js
 var instance_map = __webpack_require__(899);
@@ -48959,6 +48959,33 @@ var Ui = /*#__PURE__*/function () {
       });
     }
     /**
+     * Add jira event
+     * @private
+     */
+
+  }, {
+    key: "_addJiraEvent",
+    value: function _addJiraEvent() {
+      var _this11 = this;
+
+      this.eventHandler.jira = function () {
+        return _this11._actions.main.jira();
+      };
+
+      forEach_default()(this._buttonElements.jira, function (element) {
+        element.addEventListener('click', _this11.eventHandler.jira);
+      });
+    }
+  }, {
+    key: "_removeJiraEvent",
+    value: function _removeJiraEvent() {
+      var _this12 = this;
+
+      forEach_default()(this._buttonElements.jira, function (element) {
+        element.removeEventListener('click', _this12.eventHandler.jira);
+      });
+    }
+    /**
      * Add load event
      * @private
      */
@@ -48966,14 +48993,14 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_addLoadEvent",
     value: function _addLoadEvent() {
-      var _this11 = this;
+      var _this13 = this;
 
       this.eventHandler.loadImage = function (event) {
-        return _this11._actions.main.load(event.target.files[0]);
+        return _this13._actions.main.load(event.target.files[0]);
       };
 
       forEach_default()(this._buttonElements.load, function (element) {
-        element.addEventListener('change', _this11.eventHandler.loadImage);
+        element.addEventListener('change', _this13.eventHandler.loadImage);
       });
     }
     /**
@@ -48984,10 +49011,10 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_removeLoadEvent",
     value: function _removeLoadEvent() {
-      var _this12 = this;
+      var _this14 = this;
 
       forEach_default()(this._buttonElements.load, function (element) {
-        element.removeEventListener('change', _this12.eventHandler.loadImage);
+        element.removeEventListener('change', _this14.eventHandler.loadImage);
       });
     }
     /**
@@ -48999,10 +49026,10 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_addMainMenuEvent",
     value: function _addMainMenuEvent(menuName) {
-      var _this13 = this;
+      var _this15 = this;
 
       this.eventHandler[menuName] = function () {
-        return _this13.changeMenu(menuName);
+        return _this15.changeMenu(menuName);
       };
 
       this._buttonElements[menuName].addEventListener('click', this.eventHandler[menuName]);
@@ -49016,14 +49043,14 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_addSubMenuEvent",
     value: function _addSubMenuEvent(menuName) {
-      var _this14 = this;
+      var _this16 = this;
 
       this[menuName].addEvent(this._actions[menuName]);
       this[menuName].on(eventNames.INPUT_BOX_EDITING_STARTED, function () {
-        return _this14.fire(eventNames.INPUT_BOX_EDITING_STARTED);
+        return _this16.fire(eventNames.INPUT_BOX_EDITING_STARTED);
       });
       this[menuName].on(eventNames.INPUT_BOX_EDITING_STOPPED, function () {
-        return _this14.fire(eventNames.INPUT_BOX_EDITING_STOPPED);
+        return _this16.fire(eventNames.INPUT_BOX_EDITING_STOPPED);
       });
     }
     /**
@@ -49034,12 +49061,12 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_addMenuEvent",
     value: function _addMenuEvent() {
-      var _this15 = this;
+      var _this17 = this;
 
       forEach_default()(this.options.menu, function (menuName) {
-        _this15._addMainMenuEvent(menuName);
+        _this17._addMainMenuEvent(menuName);
 
-        _this15._addSubMenuEvent(menuName);
+        _this17._addSubMenuEvent(menuName);
       });
     }
     /**
@@ -49050,14 +49077,14 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_removeMainMenuEvent",
     value: function _removeMainMenuEvent() {
-      var _this16 = this;
+      var _this18 = this;
 
       forEach_default()(this.options.menu, function (menuName) {
-        _this16._buttonElements[menuName].removeEventListener('click', _this16.eventHandler[menuName]);
+        _this18._buttonElements[menuName].removeEventListener('click', _this18.eventHandler[menuName]);
 
-        _this16[menuName].off(eventNames.INPUT_BOX_EDITING_STARTED);
+        _this18[menuName].off(eventNames.INPUT_BOX_EDITING_STARTED);
 
-        _this16[menuName].off(eventNames.INPUT_BOX_EDITING_STOPPED);
+        _this18[menuName].off(eventNames.INPUT_BOX_EDITING_STOPPED);
       });
     }
     /**
@@ -49089,6 +49116,8 @@ var Ui = /*#__PURE__*/function () {
 
       this._addClipboardEvent();
 
+      this._addJiraEvent();
+
       this._addMenuEvent();
 
       this._initMenu();
@@ -49111,6 +49140,8 @@ var Ui = /*#__PURE__*/function () {
 
       this._removeClipboardEvent();
 
+      this._removeJiraEvent();
+
       this._removeLoadEvent();
 
       this._removeMainMenuEvent();
@@ -49125,10 +49156,10 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "_destroyAllMenu",
     value: function _destroyAllMenu() {
-      var _this17 = this;
+      var _this19 = this;
 
       forEach_default()(this.options.menu, function (menuName) {
-        _this17[menuName].destroy();
+        _this19[menuName].destroy();
       });
 
       this._historyMenu.destroy();
@@ -49141,13 +49172,13 @@ var Ui = /*#__PURE__*/function () {
   }, {
     key: "initCanvas",
     value: function initCanvas() {
-      var _this18 = this;
+      var _this20 = this;
 
       var loadImageInfo = this._getLoadImage();
 
       if (loadImageInfo.path) {
         this._actions.main.initLoadImage(loadImageInfo.path, loadImageInfo.name).then(function () {
-          _this18.activeMenuEvent();
+          _this20.activeMenuEvent();
         });
       }
 
@@ -50822,6 +50853,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
 
 
+
 /* harmony default export */ var action = ({
   /**
    * Get ui actions
@@ -51006,6 +51038,63 @@ var ImageTracer = /*#__PURE__*/function () {
           return promise_default().reject(message);
         });
       },
+      jira: function () {
+        var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee() {
+          var _context;
+
+          var _window, chrome, items, user, url, response, json;
+
+          return regenerator_default().wrap(function _callee$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _window = window, chrome = _window.chrome;
+                  _context2.next = 3;
+                  return chrome.storage.sync.get({
+                    jiraServer: '',
+                    jiraLogin: '',
+                    jiraPassword: '',
+                    jiraProjects: []
+                  });
+
+                case 3:
+                  items = _context2.sent;
+                  console.log('items', items);
+                  user = btoa(concat_default()(_context = "".concat(items.jiraLogin, ":")).call(_context, items.jiraPassword));
+                  url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
+                  _context2.next = 9;
+                  return fetch(url, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: user
+                    }
+                  });
+
+                case 9:
+                  response = _context2.sent;
+                  _context2.next = 12;
+                  return response.json();
+
+                case 12:
+                  json = _context2.sent;
+                  console.log('json', json);
+
+                case 14:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        function jira() {
+          return _jira.apply(this, arguments);
+        }
+
+        return jira;
+      }(),
       download: function download() {
         var dataURL = _this.toDataURL();
 
@@ -51030,17 +51119,17 @@ var ImageTracer = /*#__PURE__*/function () {
         }
       },
       clipboard: function () {
-        var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee() {
-          var dataURL, blob, _window, ClipboardItem;
+        var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+          var dataURL, blob, _window2, ClipboardItem;
 
-          return regenerator_default().wrap(function _callee$(_context) {
+          return regenerator_default().wrap(function _callee2$(_context3) {
             while (1) {
-              switch (_context.prev = _context.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   dataURL = _this.toDataURL();
                   blob = base64ToBlob(dataURL);
-                  _window = window, ClipboardItem = _window.ClipboardItem;
-                  _context.next = 5;
+                  _window2 = window, ClipboardItem = _window2.ClipboardItem;
+                  _context3.next = 5;
                   return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
 
                 case 5:
@@ -51048,10 +51137,10 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 6:
                 case "end":
-                  return _context.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee);
+          }, _callee2);
         }));
 
         function clipboard() {
@@ -51498,7 +51587,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
       /* eslint-disable complexity */
       objectActivated: function objectActivated(obj) {
-        var _context2, _context3;
+        var _context4, _context5;
 
         _this12.activeObjectId = obj.id;
 
@@ -51508,7 +51597,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
         if (obj.type === 'cropzone') {
           _this12.ui.crop.changeApplyButtonStatus(true);
-        } else if (index_of_default()(_context2 = ['rect', 'circle', 'triangle']).call(_context2, obj.type) > -1) {
+        } else if (index_of_default()(_context4 = ['rect', 'circle', 'triangle']).call(_context4, obj.type) > -1) {
           _this12.stopDrawingMode();
 
           if (_this12.ui.submenu !== 'shape') {
@@ -51528,7 +51617,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
             _this12.ui.draw.changeStandbyMode();
           }
-        } else if (index_of_default()(_context3 = ['i-text', 'text']).call(_context3, obj.type) > -1) {
+        } else if (index_of_default()(_context5 = ['i-text', 'text']).call(_context5, obj.type) > -1) {
           if (_this12.ui.submenu !== 'text') {
             _this12.ui.changeMenu('text', false, false);
           }
@@ -51570,22 +51659,22 @@ var ImageTracer = /*#__PURE__*/function () {
         });
       },
       addObjectAfter: function addObjectAfter(obj) {
-        var _context4;
+        var _context6;
 
         if (obj.type === 'icon') {
           _this12.ui.icon.changeStandbyMode();
-        } else if (index_of_default()(_context4 = ['rect', 'circle', 'triangle']).call(_context4, obj.type) > -1) {
+        } else if (index_of_default()(_context6 = ['rect', 'circle', 'triangle']).call(_context6, obj.type) > -1) {
           _this12.ui.shape.setMaxStrokeValue(Math.min(obj.width, obj.height));
 
           _this12.ui.shape.changeStandbyMode();
         }
       },
       objectScaled: function objectScaled(obj) {
-        var _context5, _context6;
+        var _context7, _context8;
 
-        if (index_of_default()(_context5 = ['i-text', 'text']).call(_context5, obj.type) > -1) {
+        if (index_of_default()(_context7 = ['i-text', 'text']).call(_context7, obj.type) > -1) {
           _this12.ui.text.fontSize = toInteger(obj.fontSize);
-        } else if (index_of_default()(_context6 = ['rect', 'circle', 'triangle']).call(_context6, obj.type) >= 0) {
+        } else if (index_of_default()(_context8 = ['rect', 'circle', 'triangle']).call(_context8, obj.type) >= 0) {
           var width = obj.width,
               height = obj.height;
 
@@ -51637,10 +51726,10 @@ var ImageTracer = /*#__PURE__*/function () {
    */
   _commonAction: function _commonAction() {
     var _this14 = this,
-        _context7,
-        _context8,
         _context9,
-        _context10;
+        _context10,
+        _context11,
+        _context12;
 
     var TEXT = drawingModes.TEXT,
         CROPPER = drawingModes.CROPPER,
@@ -51681,10 +51770,10 @@ var ImageTracer = /*#__PURE__*/function () {
             break;
         }
       },
-      deactivateAll: bind_default()(_context7 = this.deactivateAll).call(_context7, this),
-      changeSelectableAll: bind_default()(_context8 = this.changeSelectableAll).call(_context8, this),
-      discardSelection: bind_default()(_context9 = this.discardSelection).call(_context9, this),
-      stopDrawingMode: bind_default()(_context10 = this.stopDrawingMode).call(_context10, this)
+      deactivateAll: bind_default()(_context9 = this.deactivateAll).call(_context9, this),
+      changeSelectableAll: bind_default()(_context10 = this.changeSelectableAll).call(_context10, this),
+      discardSelection: bind_default()(_context11 = this.discardSelection).call(_context11, this),
+      stopDrawingMode: bind_default()(_context12 = this.stopDrawingMode).call(_context12, this)
     };
   },
 

@@ -146,6 +146,28 @@ export default {
             })
             ['catch']((message) => Promise.reject(message));
         },
+        jira: async () => {
+          const { chrome } = window;
+          const items = await chrome.storage.sync.get({
+            jiraServer: '',
+            jiraLogin: '',
+            jiraPassword: '',
+            jiraProjects: [],
+          });
+          console.log('items', items);
+          const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
+          const url = `https://gorira.omnishop.app/projects?host=${items.jiraServer}`;
+          const response = await fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: user,
+            },
+          });
+          const json = await response.json();
+          console.log('json', json);
+        },
         download: () => {
           const dataURL = this.toDataURL();
           let imageName = this.getImageName();

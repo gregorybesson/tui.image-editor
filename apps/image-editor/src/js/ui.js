@@ -630,6 +630,23 @@ class Ui {
   }
 
   /**
+   * Add jira event
+   * @private
+   */
+  _addJiraEvent() {
+    this.eventHandler.jira = () => this._actions.main.jira();
+    forEach(this._buttonElements.jira, (element) => {
+      element.addEventListener('click', this.eventHandler.jira);
+    });
+  }
+
+  _removeJiraEvent() {
+    forEach(this._buttonElements.jira, (element) => {
+      element.removeEventListener('click', this.eventHandler.jira);
+    });
+  }
+
+  /**
    * Add load event
    * @private
    */
@@ -720,6 +737,7 @@ class Ui {
     this._addHelpActionEvent();
     this._addDownloadEvent();
     this._addClipboardEvent();
+    this._addJiraEvent();
     this._addMenuEvent();
     this._initMenu();
     this._historyMenu.addEvent(this._actions.history);
@@ -734,6 +752,7 @@ class Ui {
     this._removeHelpActionEvent();
     this._removeDownloadEvent();
     this._removeClipboardEvent();
+    this._removeJiraEvent();
     this._removeLoadEvent();
     this._removeMainMenuEvent();
     this._historyMenu.removeEvent();

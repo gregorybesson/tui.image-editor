@@ -9,7 +9,7 @@ export default ({ locale, biImage, loadButtonStyle, downloadButtonStyle, menuBar
         <ul class="tui-image-editor-menu" style="text-align: left"></ul>
 
         <div class="tui-image-editor-controls-buttons">
-            <button class="tui-image-editor-clipboard-btn" style="${loadButtonStyle}">
+            <button class="tui-image-editor-jira-btn" style="${loadButtonStyle}">
                 ${locale.localize('Jira')}
             </button>
             <button class="tui-image-editor-clipboard-btn" style="${downloadButtonStyle}">
@@ -17,9 +17,6 @@ export default ({ locale, biImage, loadButtonStyle, downloadButtonStyle, menuBar
             </button>
             <button class="tui-image-editor-download-btn" style="${downloadButtonStyle}">
                 ${locale.localize('Download')}
-            </button>
-            <button class="tui-image-editor-print-btn" style="${downloadButtonStyle}">
-                ${locale.localize('Print')}
             </button>
         </div>
     </div>
