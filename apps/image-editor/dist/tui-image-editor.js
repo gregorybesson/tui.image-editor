@@ -47707,8 +47707,9 @@ var Ui = /*#__PURE__*/function () {
         console.log('drop');
         var shiftX = ev.clientX;
         var shiftY = ev.clientY;
-        this._subMenuElement.style.left = shiftX;
-        this._subMenuElement.style.top = shiftY;
+        console.log('shiftX, shiftY', shiftX, shiftY);
+        document.getElementById('tui-image-editor-submenu').style.left = shiftX;
+        document.getElementById('tui-image-editor-submenu').style.top = shiftY;
       });
 
       this._mainElement.addEventListener('dragover', function (ev) {
