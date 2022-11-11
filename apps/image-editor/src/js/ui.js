@@ -317,15 +317,6 @@ class Ui {
       ev.stopPropagation();
     });
 
-    const ranges = document.querySelectorAll('.tui-image-editor-range');
-    for (let i = 0; i < ranges.length; i = i + 1) {
-      ranges[i].draggable = true;
-      ranges[i].addEventListener('dragstart', function (ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-      });
-    }
-
     forEach(this.options.menu, (menuName) => {
       const SubComponentClass =
         SUB_UI_COMPONENT[menuName.replace(/^[a-z]/, ($0) => $0.toUpperCase())];
@@ -344,6 +335,15 @@ class Ui {
         settings: this.options.settings[menuName] ?? {},
         usageStatistics: this.options.usageStatistics,
       });
+
+      const ranges = document.querySelectorAll('.tui-image-editor-range');
+      for (let i = 0; i < ranges.length; i = i + 1) {
+        ranges[i].draggable = true;
+        ranges[i].addEventListener('dragstart', function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+      }
     });
   }
 

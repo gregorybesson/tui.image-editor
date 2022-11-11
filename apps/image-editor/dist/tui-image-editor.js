@@ -47729,16 +47729,6 @@ var Ui = /*#__PURE__*/function () {
         ev.stopPropagation();
       });
 
-      var ranges = document.querySelectorAll('.tui-image-editor-range');
-
-      for (var i = 0; i < ranges.length; i = i + 1) {
-        ranges[i].draggable = true;
-        ranges[i].addEventListener('dragstart', function (ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-        });
-      }
-
       forEach_default()(this.options.menu, function (menuName) {
         var _context, _this$options$setting;
 
@@ -47758,6 +47748,15 @@ var Ui = /*#__PURE__*/function () {
           settings: (_this$options$setting = _this.options.settings[menuName]) !== null && _this$options$setting !== void 0 ? _this$options$setting : {},
           usageStatistics: _this.options.usageStatistics
         });
+        var ranges = document.querySelectorAll('.tui-image-editor-range');
+
+        for (var i = 0; i < ranges.length; i = i + 1) {
+          ranges[i].draggable = true;
+          ranges[i].addEventListener('dragstart', function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+          });
+        }
       });
     }
     /**
