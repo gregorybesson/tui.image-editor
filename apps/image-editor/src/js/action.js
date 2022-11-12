@@ -148,11 +148,11 @@ export default {
         },
         jira: async () => {
           const jiraDiv = document.querySelector('.tui-image-editor-jira');
-          const isOpen = jiraDiv.classList.contains('slide-in');
+          const isOpen = jiraDiv.classList.contains('show');
           if (isOpen) {
-            jiraDiv.setAttribute('class', 'slide-out');
+            jiraDiv.remove('show');
           } else {
-            jiraDiv.setAttribute('class', 'slide-in');
+            jiraDiv.add('show');
             const { chrome } = window;
             const items = await chrome.storage.sync.get({
               jiraServer: '',
