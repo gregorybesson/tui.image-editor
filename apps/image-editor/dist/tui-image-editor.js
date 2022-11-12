@@ -43583,7 +43583,7 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       submenuStyle = _ref.submenuStyle;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\" style=\"position: absolute; right: 10px; background-color: #fff; width: 500px; height: 100%; z-index: 2; border-left: black 1px solid;\">\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <div class=\"form-group\" style=\"padding: 1rem 0;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\" style=\"padding: 1rem 0;\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"5\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\" style=\"position: absolute; right: 10px; background-color: #fff; width: 500px; height: 100%; z-index: 2; border-left: black 1px solid;\">\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0; text-align: left;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"5\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
 });
 ;// CONCATENATED MODULE: ./src/js/ui/template/controls.js
 
@@ -51237,16 +51237,28 @@ var ImageTracer = /*#__PURE__*/function () {
       },
       jira: function () {
         var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
-          var _context;
-
-          var _window, chrome, items, user, url, response, projects, jiraSelect, option;
+          var jiraDiv, isOpen, _context, _window, chrome, items, user, url, response, projects, jiraSelect, option;
 
           return regenerator_default().wrap(function _callee2$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
+                  jiraDiv = document.querySelector('.tui-image-editor-jira');
+                  isOpen = jiraDiv.classList.contains('slide-in');
+
+                  if (!isOpen) {
+                    _context3.next = 6;
+                    break;
+                  }
+
+                  jiraDiv.setAttribute('class', 'slide-out');
+                  _context3.next = 28;
+                  break;
+
+                case 6:
+                  jiraDiv.setAttribute('class', 'slide-in');
                   _window = window, chrome = _window.chrome;
-                  _context3.next = 3;
+                  _context3.next = 10;
                   return chrome.storage.sync.get({
                     jiraServer: '',
                     jiraLogin: '',
@@ -51255,12 +51267,12 @@ var ImageTracer = /*#__PURE__*/function () {
                     jiraSelectedProject: ''
                   });
 
-                case 3:
+                case 10:
                   items = _context3.sent;
                   console.log('items', items);
                   user = btoa(concat_default()(_context = "".concat(items.jiraLogin, ":")).call(_context, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context3.next = 9;
+                  _context3.next = 16;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51270,12 +51282,12 @@ var ImageTracer = /*#__PURE__*/function () {
                     }
                   });
 
-                case 9:
+                case 16:
                   response = _context3.sent;
-                  _context3.next = 12;
+                  _context3.next = 19;
                   return response.json();
 
-                case 12:
+                case 19:
                   projects = _context3.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
@@ -51348,7 +51360,7 @@ var ImageTracer = /*#__PURE__*/function () {
                     };
                   }());
 
-                case 21:
+                case 28:
                 case "end":
                   return _context3.stop();
               }

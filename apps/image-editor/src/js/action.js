@@ -147,69 +147,79 @@ export default {
             ['catch']((message) => Promise.reject(message));
         },
         jira: async () => {
-          const { chrome } = window;
-          const items = await chrome.storage.sync.get({
-            jiraServer: '',
-            jiraLogin: '',
-            jiraPassword: '',
-            jiraProjects: [],
-            jiraSelectedProject: '',
-          });
-          console.log('items', items);
-          const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
-          const url = `https://gorira.omnishop.app/projects?host=${items.jiraServer}`;
-          const response = await fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: user,
-            },
-          });
-          const projects = await response.json();
-          const jiraSelect = document.getElementById('jiraProjects');
-          jiraSelect.innerHTML = '';
-          let option = document.createElement('option');
-          option.value = '';
-          option.text = 'Select a project';
-          document.getElementById('jiraProjects').appendChild(option);
-          projects.forEach((project) => {
-            option = document.createElement('option');
-            option.value = project.key;
-            option.text = project.name;
-            if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
-              option.selected = true;
-            }
-            document.getElementById('jiraProjects').appendChild(option);
-          });
-
-          document.getElementById('formJira').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('submit');
-            const imageData = this.toDataURL();
-            const formData = new FormData(document.getElementById('formJira'));
-            const formValues = Object.fromEntries(formData.entries());
-            formValues.type = 'png';
-            formValues.data = imageData;
-
-            // await chrome.storage.sync.set({
-            //   jiraServer: items.jiraServer,
-            //   jiraLogin: items.jiraLogin,
-            //   jiraPassword: items.jiraPassword,
-            //   jiraProjects: items.jiraProjects
-            // })
-
-            const res = await fetch(`https://gorira.omnishop.app/issue?host=${items.jiraServer}`, {
-              method: 'POST',
+          const jiraDiv = document.querySelector('.tui-image-editor-jira');
+          const isOpen = jiraDiv.classList.contains('slide-in');
+          if (isOpen) {
+            jiraDiv.setAttribute('class', 'slide-out');
+          } else {
+            jiraDiv.setAttribute('class', 'slide-in');
+            const { chrome } = window;
+            const items = await chrome.storage.sync.get({
+              jiraServer: '',
+              jiraLogin: '',
+              jiraPassword: '',
+              jiraProjects: [],
+              jiraSelectedProject: '',
+            });
+            console.log('items', items);
+            const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
+            const url = `https://gorira.omnishop.app/projects?host=${items.jiraServer}`;
+            const response = await fetch(url, {
+              method: 'GET',
+              mode: 'cors',
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: user,
               },
-              body: JSON.stringify(formValues),
             });
-            const json = await res.json();
-            console.log('json', json);
-          });
+            const projects = await response.json();
+            const jiraSelect = document.getElementById('jiraProjects');
+            jiraSelect.innerHTML = '';
+            let option = document.createElement('option');
+            option.value = '';
+            option.text = 'Select a project';
+            document.getElementById('jiraProjects').appendChild(option);
+            projects.forEach((project) => {
+              option = document.createElement('option');
+              option.value = project.key;
+              option.text = project.name;
+              if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
+                option.selected = true;
+              }
+              document.getElementById('jiraProjects').appendChild(option);
+            });
+
+            document.getElementById('formJira').addEventListener('submit', async (e) => {
+              e.preventDefault();
+              console.log('submit');
+              const imageData = this.toDataURL();
+              const formData = new FormData(document.getElementById('formJira'));
+              const formValues = Object.fromEntries(formData.entries());
+              formValues.type = 'png';
+              formValues.data = imageData;
+
+              // await chrome.storage.sync.set({
+              //   jiraServer: items.jiraServer,
+              //   jiraLogin: items.jiraLogin,
+              //   jiraPassword: items.jiraPassword,
+              //   jiraProjects: items.jiraProjects
+              // })
+
+              const res = await fetch(
+                `https://gorira.omnishop.app/issue?host=${items.jiraServer}`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: user,
+                  },
+                  body: JSON.stringify(formValues),
+                }
+              );
+              const json = await res.json();
+              console.log('json', json);
+            });
+          }
         },
         download: () => {
           const dataURL = this.toDataURL();
