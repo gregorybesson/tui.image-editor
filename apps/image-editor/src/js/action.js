@@ -205,7 +205,7 @@ export default {
                 'Content-Type': 'application/json',
                 Authorization: user,
               },
-              data: JSON.stringify(formValues),
+              body: JSON.stringify(formValues),
             });
             const json = await res.json();
             console.log('json', json);

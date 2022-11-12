@@ -51323,7 +51323,7 @@ var ImageTracer = /*#__PURE__*/function () {
                                   'Content-Type': 'application/json',
                                   Authorization: user
                                 },
-                                data: stringify_default()(formValues)
+                                body: stringify_default()(formValues)
                               });
 
                             case 9:
