@@ -150,9 +150,9 @@ export default {
           const jiraDiv = document.querySelector('.tui-image-editor-jira');
           const isOpen = jiraDiv.classList.contains('show');
           if (isOpen) {
-            jiraDiv.remove('show');
+            jiraDiv.classList.remove('show');
           } else {
-            jiraDiv.add('show');
+            jiraDiv.classList.add('show');
             const { chrome } = window;
             const items = await chrome.storage.sync.get({
               jiraServer: '',

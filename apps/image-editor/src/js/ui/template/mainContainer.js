@@ -8,12 +8,12 @@ export default ({
   submenuStyle,
 }) => `
     <style>
-      .slide-in {
+      .tui-image-editor-jira {
         transform: translateX(100%);
         -webkit-transform: translateX(100%);
       }
       
-      .slide-in.show {
+      .tui-image-editor-jira.show {
         transform: translateX(0);
         -webkit-transform: translateX(0);
       }
@@ -37,7 +37,7 @@ export default ({
             <div class="tui-image-editor-submenu" draggable="true" style="width: 250px;">
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
-            <div class="tui-image-editor-jira" style="position: absolute; right: 10px; background-color: #fff; width: 500px; height: 100%; z-index: 2; border-left: black 1px solid; transform: translateX(-100%); -webkit-transform: translateX(-100%);">
+            <div class="tui-image-editor-jira" style="position: absolute; right: 10px; background-color: #fff; width: 500px; height: 100%; z-index: 2; border-left: black 1px solid;">
                 <form id="formJira" style="display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;">
                     <input type="hidden" name="page-title" id="jira-page-title"/>
                     <input type="hidden" name="page-url" id="jira-page-url"/>
