@@ -187,7 +187,7 @@ export default {
             e.preventDefault();
             console.log('submit');
             const imageData = this.toDataURL();
-            const formData = new FormData(e.target);
+            const formData = new FormData(document.getElementById('formJira'));
             const formValues = Object.fromEntries(formData.entries());
             formValues.type = 'png';
             formValues.data = imageData;

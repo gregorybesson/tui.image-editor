@@ -51306,7 +51306,7 @@ var ImageTracer = /*#__PURE__*/function () {
                               e.preventDefault();
                               console.log('submit');
                               imageData = _this.toDataURL();
-                              formData = new FormData(e.target);
+                              formData = new FormData(document.getElementById('formJira'));
                               formValues = from_entries_default()(entries_default()(formData).call(formData));
                               formValues.type = 'png';
                               formValues.data = imageData; // await chrome.storage.sync.set({
