@@ -51,7 +51,7 @@ export default ({
                     <input type="hidden" name="page-title" id="jira-page-title"/>
                     <input type="hidden" name="page-url" id="jira-page-url"/>
                     <h2 id="jira-issue" style="display: none; background-color: yellowgreen; width: 100%; padding: 1rem;">
-                        Issue created: <a id="jira-issue-id" href="#"></a>
+                        Issue created: <a id="jira-issue-id" href="#" target="_blank"></a>
                     </h2>
                     <div class="form-group" style="padding: 1rem 0 0; text-align: left;">
                         <label for="jiraProjects">Project <superscript>*</superscript></label><br/>
