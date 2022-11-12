@@ -11,11 +11,20 @@ export default ({
       .tui-image-editor-jira {
         transform: translateX(100%);
         -webkit-transform: translateX(100%);
+        position: absolute;
+        right: 10px;
+        background-color: #fff;
+        width: 500px;
+        height: 100%;
+        z-index: 2;
+        border: 0;
+        transition: transform .5s ease;
       }
       
       .tui-image-editor-jira.show {
         transform: translateX(0);
         -webkit-transform: translateX(0);
+        border-left: black 1px solid;
       }
     </style>
     <div class="tui-image-editor-main-container" style="${commonStyle}">
@@ -37,7 +46,7 @@ export default ({
             <div class="tui-image-editor-submenu" draggable="true" style="width: 250px;">
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
-            <div class="tui-image-editor-jira" style="position: absolute; right: 10px; background-color: #fff; width: 500px; height: 100%; z-index: 2; border-left: black 1px solid;">
+            <div class="tui-image-editor-jira">
                 <form id="formJira" style="display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;">
                     <input type="hidden" name="page-title" id="jira-page-title"/>
                     <input type="hidden" name="page-url" id="jira-page-url"/>
