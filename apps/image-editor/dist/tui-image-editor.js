@@ -51387,7 +51387,7 @@ var ImageTracer = /*#__PURE__*/function () {
                     option.value = project.key;
                     option.text = project.name;
 
-                    if (selectedProject !== '' && project.key.toLowerCase() === selectedProject.toLowerCase()) {
+                    if (selectedProject && project.key.toLowerCase() === selectedProject.toLowerCase()) {
                       option.selected = true;
                     }
 

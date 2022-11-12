@@ -188,10 +188,7 @@ export default {
               option = document.createElement('option');
               option.value = project.key;
               option.text = project.name;
-              if (
-                selectedProject !== '' &&
-                project.key.toLowerCase() === selectedProject.toLowerCase()
-              ) {
+              if (selectedProject && project.key.toLowerCase() === selectedProject.toLowerCase()) {
                 option.selected = true;
               }
               document.getElementById('jiraProjects').appendChild(option);
