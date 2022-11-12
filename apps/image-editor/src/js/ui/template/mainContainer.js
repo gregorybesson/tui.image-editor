@@ -65,7 +65,7 @@ export default ({
                     </div>
                     <div class="form-group" style="padding: 1rem 0; text-align: left;">
                         <label for="jira-description">Description <superscript>*</superscript></label><br/>
-                        <textarea class="form-control" name="description" id="jira-description" rows="5" style="user-select: auto;" required></textarea><br/>
+                        <textarea class="form-control" name="description" id="jira-description" rows="10" cols="45" style="user-select: auto;" required></textarea><br/>
                         <small id="descriptionHelp" class="form-text text-muted">try to be specific. Your description will be appended with your screenshot</small>
                     </div>
                     <button type="submit" title="Create a ticket" class="btn btn-primary share">Send to Jira</button>

@@ -189,7 +189,7 @@ export default {
               document.getElementById('jiraProjects').appendChild(option);
             });
 
-            document.getElementById('formJira').addEventListener('submit', async (e) => {
+            const createJira = async (e) => {
               e.preventDefault();
               console.log('submit');
               const imageData = this.toDataURL();
@@ -218,7 +218,10 @@ export default {
               );
               const json = await res.json();
               console.log('json', json);
-            });
+            };
+
+            document.getElementById('formJira').removeEventListener('submit', createJira);
+            document.getElementById('formJira').addEventListener('submit', createJira);
           }
         },
         download: () => {
