@@ -159,9 +159,11 @@ export default {
               jiraLogin: '',
               jiraPassword: '',
               jiraProjects: [],
-              jiraSelectedProject: '',
             });
-            console.log('items', items);
+            const websiteUrl = document.getElementById('jira-page-url').value;
+            const arr = websiteUrl.split('/');
+            const websiteHost = `${arr[0]}//${arr[2]}`;
+            const selectedProject = items.jiraProjects.find((p) => p.url === websiteHost).key ?? '';
             const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
             const url = `https://gorira.omnishop.app/projects?host=${items.jiraServer}`;
             const response = await fetch(url, {
@@ -183,7 +185,10 @@ export default {
               option = document.createElement('option');
               option.value = project.key;
               option.text = project.name;
-              if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
+              if (
+                selectedProject !== '' &&
+                project.key.toLowerCase() === selectedProject.toLowerCase()
+              ) {
                 option.selected = true;
               }
               document.getElementById('jiraProjects').appendChild(option);
@@ -197,12 +202,25 @@ export default {
               formValues.type = 'png';
               formValues.data = imageData;
 
-              // await chrome.storage.sync.set({
-              //   jiraServer: items.jiraServer,
-              //   jiraLogin: items.jiraLogin,
-              //   jiraPassword: items.jiraPassword,
-              //   jiraProjects: items.jiraProjects
-              // })
+              if (formValues['keep-project']) {
+                const project = {
+                  key: formValues.key,
+                  url: websiteHost,
+                };
+                items.jiraProjects = items.jiraProjects.map((p) => {
+                  if (p.url === websiteHost) {
+                    p.key = formValues.key;
+                  }
+
+                  return p;
+                });
+                if (
+                  !items.jiraProjects.find((p) => p.key === project.key && p.url === project.url)
+                ) {
+                  items.jiraProjects.push(project);
+                }
+                chrome.storage.sync.set({ jiraProjects: items.jiraProjects });
+              }
 
               const res = await fetch(
                 `https://gorira.omnishop.app/issue?host=${items.jiraServer}`,
@@ -222,9 +240,6 @@ export default {
                 jiraIssue.style.display = 'block';
                 jiraId.innerHTML = json.key;
                 jiraId.href = `${items.jiraServer}/browse/${json.key}`;
-                setTimeout(() => {
-                  jiraIssue.style.display = 'none';
-                }, 5000);
               }
               console.log('json', json);
             };

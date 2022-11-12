@@ -32123,6 +32123,13 @@ module.exports = __webpack_require__(5603);
 
 /***/ }),
 
+/***/ 1052:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(6237);
+
+/***/ }),
+
 /***/ 7636:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32647,6 +32654,17 @@ module.exports = entryVirtual('Array').filter;
 
 /***/ }),
 
+/***/ 2087:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(880);
+var entryVirtual = __webpack_require__(5607);
+
+module.exports = entryVirtual('Array').find;
+
+
+/***/ }),
+
 /***/ 98:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32780,6 +32798,21 @@ var ArrayPrototype = Array.prototype;
 module.exports = function (it) {
   var own = it.filter;
   return it === ArrayPrototype || (it instanceof Array && own === ArrayPrototype.filter) ? filter : own;
+};
+
+
+/***/ }),
+
+/***/ 7506:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var find = __webpack_require__(2087);
+
+var ArrayPrototype = Array.prototype;
+
+module.exports = function (it) {
+  var own = it.find;
+  return it === ArrayPrototype || (it instanceof Array && own === ArrayPrototype.find) ? find : own;
 };
 
 
@@ -36620,6 +36653,35 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ }),
 
+/***/ 880:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(3085);
+var $find = __webpack_require__(454).find;
+var addToUnscopables = __webpack_require__(7423);
+
+var FIND = 'find';
+var SKIPS_HOLES = true;
+
+// Shouldn't skip holes
+if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.find` method
+// https://tc39.es/ecma262/#sec-array.prototype.find
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
+  find: function find(callbackfn /* , that = undefined */) {
+    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND);
+
+
+/***/ }),
+
 /***/ 9823:
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
@@ -40026,6 +40088,16 @@ module.exports = parent;
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 var parent = __webpack_require__(3669);
+
+module.exports = parent;
+
+
+/***/ }),
+
+/***/ 6237:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var parent = __webpack_require__(7506);
 
 module.exports = parent;
 
@@ -49590,6 +49662,9 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 // EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/filter.js
 var instance_filter = __webpack_require__(381);
 var filter_default = /*#__PURE__*/__webpack_require__.n(instance_filter);
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/find.js
+var find = __webpack_require__(1052);
+var find_default = /*#__PURE__*/__webpack_require__.n(find);
 // EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/object/from-entries.js
 var from_entries = __webpack_require__(6139);
 var from_entries_default = /*#__PURE__*/__webpack_require__.n(from_entries);
@@ -51052,6 +51127,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
 
 
+
 /* harmony default export */ var action = ({
   /**
    * Get ui actions
@@ -51238,42 +51314,46 @@ var ImageTracer = /*#__PURE__*/function () {
       },
       jira: function () {
         var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
-          var jiraDiv, isOpen, _context, _window, chrome, items, user, url, response, projects, jiraSelect, option, createJira;
+          var jiraDiv, isOpen, _context, _items$jiraProjects$f, _context2, _context3, _window, chrome, items, websiteUrl, arr, websiteHost, selectedProject, user, url, response, projects, jiraSelect, option, createJira;
 
-          return regenerator_default().wrap(function _callee2$(_context4) {
+          return regenerator_default().wrap(function _callee2$(_context8) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context8.prev = _context8.next) {
                 case 0:
                   jiraDiv = document.querySelector('.tui-image-editor-jira');
                   isOpen = jiraDiv.classList.contains('show');
 
                   if (!isOpen) {
-                    _context4.next = 6;
+                    _context8.next = 6;
                     break;
                   }
 
                   jiraDiv.classList.remove('show');
-                  _context4.next = 30;
+                  _context8.next = 33;
                   break;
 
                 case 6:
                   jiraDiv.classList.add('show');
                   _window = window, chrome = _window.chrome;
-                  _context4.next = 10;
+                  _context8.next = 10;
                   return chrome.storage.sync.get({
                     jiraServer: '',
                     jiraLogin: '',
                     jiraPassword: '',
-                    jiraProjects: [],
-                    jiraSelectedProject: ''
+                    jiraProjects: []
                   });
 
                 case 10:
-                  items = _context4.sent;
-                  console.log('items', items);
-                  user = btoa(concat_default()(_context = "".concat(items.jiraLogin, ":")).call(_context, items.jiraPassword));
+                  items = _context8.sent;
+                  websiteUrl = document.getElementById('jira-page-url').value;
+                  arr = websiteUrl.split('/');
+                  websiteHost = concat_default()(_context = "".concat(arr[0], "//")).call(_context, arr[2]);
+                  selectedProject = (_items$jiraProjects$f = find_default()(_context2 = items.jiraProjects).call(_context2, function (p) {
+                    return p.url === websiteHost;
+                  }).key) !== null && _items$jiraProjects$f !== void 0 ? _items$jiraProjects$f : '';
+                  user = btoa(concat_default()(_context3 = "".concat(items.jiraLogin, ":")).call(_context3, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context4.next = 16;
+                  _context8.next = 19;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51283,13 +51363,13 @@ var ImageTracer = /*#__PURE__*/function () {
                     }
                   });
 
-                case 16:
-                  response = _context4.sent;
-                  _context4.next = 19;
+                case 19:
+                  response = _context8.sent;
+                  _context8.next = 22;
                   return response.json();
 
-                case 19:
-                  projects = _context4.sent;
+                case 22:
+                  projects = _context8.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
                   option = document.createElement('option');
@@ -51302,7 +51382,7 @@ var ImageTracer = /*#__PURE__*/function () {
                     option.value = project.key;
                     option.text = project.name;
 
-                    if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
+                    if (selectedProject !== '' && project.key.toLowerCase() === selectedProject.toLowerCase()) {
                       option.selected = true;
                     }
 
@@ -51311,25 +51391,44 @@ var ImageTracer = /*#__PURE__*/function () {
 
                   createJira = /*#__PURE__*/function () {
                     var _ref = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee(e) {
-                      var imageData, formData, formValues, res, json, _context2, jiraIssue, jiraId;
+                      var imageData, formData, formValues, _context4, _context5, project, res, json, _context6, jiraIssue, jiraId;
 
-                      return regenerator_default().wrap(function _callee$(_context3) {
+                      return regenerator_default().wrap(function _callee$(_context7) {
                         while (1) {
-                          switch (_context3.prev = _context3.next) {
+                          switch (_context7.prev = _context7.next) {
                             case 0:
                               e.preventDefault();
                               imageData = _this.toDataURL();
                               formData = new FormData(document.getElementById('formJira'));
                               formValues = from_entries_default()(entries_default()(formData).call(formData));
                               formValues.type = 'png';
-                              formValues.data = imageData; // await chrome.storage.sync.set({
-                              //   jiraServer: items.jiraServer,
-                              //   jiraLogin: items.jiraLogin,
-                              //   jiraPassword: items.jiraPassword,
-                              //   jiraProjects: items.jiraProjects
-                              // })
+                              formValues.data = imageData;
 
-                              _context3.next = 8;
+                              if (formValues['keep-project']) {
+                                project = {
+                                  key: formValues.key,
+                                  url: websiteHost
+                                };
+                                items.jiraProjects = map_default()(_context4 = items.jiraProjects).call(_context4, function (p) {
+                                  if (p.url === websiteHost) {
+                                    p.key = formValues.key;
+                                  }
+
+                                  return p;
+                                });
+
+                                if (!find_default()(_context5 = items.jiraProjects).call(_context5, function (p) {
+                                  return p.key === project.key && p.url === project.url;
+                                })) {
+                                  items.jiraProjects.push(project);
+                                }
+
+                                chrome.storage.sync.set({
+                                  jiraProjects: items.jiraProjects
+                                });
+                              }
+
+                              _context7.next = 9;
                               return fetch("https://gorira.omnishop.app/issue?host=".concat(items.jiraServer), {
                                 method: 'POST',
                                 headers: {
@@ -51339,31 +51438,27 @@ var ImageTracer = /*#__PURE__*/function () {
                                 body: stringify_default()(formValues)
                               });
 
-                            case 8:
-                              res = _context3.sent;
-                              _context3.next = 11;
+                            case 9:
+                              res = _context7.sent;
+                              _context7.next = 12;
                               return res.json();
 
-                            case 11:
-                              json = _context3.sent;
+                            case 12:
+                              json = _context7.sent;
 
                               if (json.key) {
                                 jiraIssue = document.getElementById('jira-issue');
                                 jiraId = document.getElementById('jira-issue-id');
                                 jiraIssue.style.display = 'block';
                                 jiraId.innerHTML = json.key;
-                                jiraId.href = concat_default()(_context2 = "".concat(items.jiraServer, "/browse/")).call(_context2, json.key);
-
-                                set_timeout_default()(function () {
-                                  jiraIssue.style.display = 'none';
-                                }, 5000);
+                                jiraId.href = concat_default()(_context6 = "".concat(items.jiraServer, "/browse/")).call(_context6, json.key);
                               }
 
                               console.log('json', json);
 
-                            case 14:
+                            case 15:
                             case "end":
-                              return _context3.stop();
+                              return _context7.stop();
                           }
                         }
                       }, _callee);
@@ -51377,9 +51472,9 @@ var ImageTracer = /*#__PURE__*/function () {
                   document.getElementById('formJira').removeEventListener('submit', createJira);
                   document.getElementById('formJira').addEventListener('submit', createJira);
 
-                case 30:
+                case 33:
                 case "end":
-                  return _context4.stop();
+                  return _context8.stop();
               }
             }
           }, _callee2);
@@ -51418,14 +51513,14 @@ var ImageTracer = /*#__PURE__*/function () {
         var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee3() {
           var dataURL, blob, _window2, ClipboardItem;
 
-          return regenerator_default().wrap(function _callee3$(_context5) {
+          return regenerator_default().wrap(function _callee3$(_context9) {
             while (1) {
-              switch (_context5.prev = _context5.next) {
+              switch (_context9.prev = _context9.next) {
                 case 0:
                   dataURL = _this.toDataURL();
                   blob = base64ToBlob(dataURL);
                   _window2 = window, ClipboardItem = _window2.ClipboardItem;
-                  _context5.next = 5;
+                  _context9.next = 5;
                   return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
 
                 case 5:
@@ -51433,7 +51528,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 6:
                 case "end":
-                  return _context5.stop();
+                  return _context9.stop();
               }
             }
           }, _callee3);
@@ -51883,7 +51978,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
       /* eslint-disable complexity */
       objectActivated: function objectActivated(obj) {
-        var _context6, _context7;
+        var _context10, _context11;
 
         _this12.activeObjectId = obj.id;
 
@@ -51893,7 +51988,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
         if (obj.type === 'cropzone') {
           _this12.ui.crop.changeApplyButtonStatus(true);
-        } else if (index_of_default()(_context6 = ['rect', 'circle', 'triangle']).call(_context6, obj.type) > -1) {
+        } else if (index_of_default()(_context10 = ['rect', 'circle', 'triangle']).call(_context10, obj.type) > -1) {
           _this12.stopDrawingMode();
 
           if (_this12.ui.submenu !== 'shape') {
@@ -51913,7 +52008,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
             _this12.ui.draw.changeStandbyMode();
           }
-        } else if (index_of_default()(_context7 = ['i-text', 'text']).call(_context7, obj.type) > -1) {
+        } else if (index_of_default()(_context11 = ['i-text', 'text']).call(_context11, obj.type) > -1) {
           if (_this12.ui.submenu !== 'text') {
             _this12.ui.changeMenu('text', false, false);
           }
@@ -51955,22 +52050,22 @@ var ImageTracer = /*#__PURE__*/function () {
         });
       },
       addObjectAfter: function addObjectAfter(obj) {
-        var _context8;
+        var _context12;
 
         if (obj.type === 'icon') {
           _this12.ui.icon.changeStandbyMode();
-        } else if (index_of_default()(_context8 = ['rect', 'circle', 'triangle']).call(_context8, obj.type) > -1) {
+        } else if (index_of_default()(_context12 = ['rect', 'circle', 'triangle']).call(_context12, obj.type) > -1) {
           _this12.ui.shape.setMaxStrokeValue(Math.min(obj.width, obj.height));
 
           _this12.ui.shape.changeStandbyMode();
         }
       },
       objectScaled: function objectScaled(obj) {
-        var _context9, _context10;
+        var _context13, _context14;
 
-        if (index_of_default()(_context9 = ['i-text', 'text']).call(_context9, obj.type) > -1) {
+        if (index_of_default()(_context13 = ['i-text', 'text']).call(_context13, obj.type) > -1) {
           _this12.ui.text.fontSize = toInteger(obj.fontSize);
-        } else if (index_of_default()(_context10 = ['rect', 'circle', 'triangle']).call(_context10, obj.type) >= 0) {
+        } else if (index_of_default()(_context14 = ['rect', 'circle', 'triangle']).call(_context14, obj.type) >= 0) {
           var width = obj.width,
               height = obj.height;
 
@@ -52022,10 +52117,10 @@ var ImageTracer = /*#__PURE__*/function () {
    */
   _commonAction: function _commonAction() {
     var _this14 = this,
-        _context11,
-        _context12,
-        _context13,
-        _context14;
+        _context15,
+        _context16,
+        _context17,
+        _context18;
 
     var TEXT = drawingModes.TEXT,
         CROPPER = drawingModes.CROPPER,
@@ -52066,10 +52161,10 @@ var ImageTracer = /*#__PURE__*/function () {
             break;
         }
       },
-      deactivateAll: bind_default()(_context11 = this.deactivateAll).call(_context11, this),
-      changeSelectableAll: bind_default()(_context12 = this.changeSelectableAll).call(_context12, this),
-      discardSelection: bind_default()(_context13 = this.discardSelection).call(_context13, this),
-      stopDrawingMode: bind_default()(_context14 = this.stopDrawingMode).call(_context14, this)
+      deactivateAll: bind_default()(_context15 = this.deactivateAll).call(_context15, this),
+      changeSelectableAll: bind_default()(_context16 = this.changeSelectableAll).call(_context16, this),
+      discardSelection: bind_default()(_context17 = this.discardSelection).call(_context17, this),
+      stopDrawingMode: bind_default()(_context18 = this.stopDrawingMode).call(_context18, this)
     };
   },
 
