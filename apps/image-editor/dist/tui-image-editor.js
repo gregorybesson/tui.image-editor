@@ -51314,7 +51314,7 @@ var ImageTracer = /*#__PURE__*/function () {
       },
       jira: function () {
         var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
-          var jiraDiv, isOpen, _context, _items$jiraProjects$f, _context2, _context3, _window, chrome, items, websiteUrl, arr, websiteHost, selectedProject, user, url, response, projects, jiraSelect, option, createJira;
+          var jiraDiv, isOpen, _context, _context2, _context3, _window, chrome, items, websiteUrl, arr, websiteHost, selectedProject, user, url, response, projects, jiraSelect, option, createJira;
 
           return regenerator_default().wrap(function _callee2$(_context8) {
             while (1) {
@@ -51329,7 +51329,7 @@ var ImageTracer = /*#__PURE__*/function () {
                   }
 
                   jiraDiv.classList.remove('show');
-                  _context8.next = 33;
+                  _context8.next = 34;
                   break;
 
                 case 6:
@@ -51348,12 +51348,17 @@ var ImageTracer = /*#__PURE__*/function () {
                   websiteUrl = document.getElementById('jira-page-url').value;
                   arr = websiteUrl.split('/');
                   websiteHost = concat_default()(_context = "".concat(arr[0], "//")).call(_context, arr[2]);
-                  selectedProject = (_items$jiraProjects$f = find_default()(_context2 = items.jiraProjects).call(_context2, function (p) {
+                  selectedProject = find_default()(_context2 = items.jiraProjects).call(_context2, function (p) {
                     return p.url === websiteHost;
-                  }).key) !== null && _items$jiraProjects$f !== void 0 ? _items$jiraProjects$f : '';
+                  });
+
+                  if (selectedProject) {
+                    selectedProject = selectedProject.key;
+                  }
+
                   user = btoa(concat_default()(_context3 = "".concat(items.jiraLogin, ":")).call(_context3, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context8.next = 19;
+                  _context8.next = 20;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51363,12 +51368,12 @@ var ImageTracer = /*#__PURE__*/function () {
                     }
                   });
 
-                case 19:
+                case 20:
                   response = _context8.sent;
-                  _context8.next = 22;
+                  _context8.next = 23;
                   return response.json();
 
-                case 22:
+                case 23:
                   projects = _context8.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
@@ -51472,7 +51477,7 @@ var ImageTracer = /*#__PURE__*/function () {
                   document.getElementById('formJira').removeEventListener('submit', createJira);
                   document.getElementById('formJira').addEventListener('submit', createJira);
 
-                case 33:
+                case 34:
                 case "end":
                   return _context8.stop();
               }

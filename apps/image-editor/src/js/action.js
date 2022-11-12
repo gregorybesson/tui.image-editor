@@ -163,7 +163,10 @@ export default {
             const websiteUrl = document.getElementById('jira-page-url').value;
             const arr = websiteUrl.split('/');
             const websiteHost = `${arr[0]}//${arr[2]}`;
-            const selectedProject = items.jiraProjects.find((p) => p.url === websiteHost).key ?? '';
+            let selectedProject = items.jiraProjects.find((p) => p.url === websiteHost);
+            if (selectedProject) {
+              selectedProject = selectedProject.key;
+            }
             const user = btoa(`${items.jiraLogin}:${items.jiraPassword}`);
             const url = `https://gorira.omnishop.app/projects?host=${items.jiraServer}`;
             const response = await fetch(url, {
