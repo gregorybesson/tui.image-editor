@@ -196,6 +196,8 @@ export default {
 
             const createJira = async (e) => {
               e.preventDefault();
+              e.stopImmediatePropagation();
+              e.stopPropagation();
               const imageData = this.toDataURL();
               const formData = new FormData(document.getElementById('formJira'));
               const formValues = Object.fromEntries(formData.entries());
@@ -244,8 +246,8 @@ export default {
               console.log('json', json);
             };
 
-            document.getElementById('formJira').removeEventListener('submit', createJira);
-            document.getElementById('formJira').addEventListener('submit', createJira);
+            // DOESN'T WORK: document.getElementById('formJira').removeEventListener('submit', createJira);
+            document.getElementById('formJira').addEventListener('submit', createJira, true);
           }
         },
         download: () => {

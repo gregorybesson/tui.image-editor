@@ -345,6 +345,7 @@ class Ui {
       }
 
       if (this.options.settings.jira) {
+        console.log('jira settings', this.options.settings.jira);
         document.getElementById('jira-page-title').value = this.options.settings.jira.title;
         document.getElementById('jira-page-url').value = this.options.settings.jira.url;
       }

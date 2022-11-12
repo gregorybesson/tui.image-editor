@@ -48850,6 +48850,7 @@ var Ui = /*#__PURE__*/function () {
         }
 
         if (_this.options.settings.jira) {
+          console.log('jira settings', _this.options.settings.jira);
           document.getElementById('jira-page-title').value = _this.options.settings.jira.title;
           document.getElementById('jira-page-url').value = _this.options.settings.jira.url;
         }
@@ -51329,7 +51330,7 @@ var ImageTracer = /*#__PURE__*/function () {
                   }
 
                   jiraDiv.classList.remove('show');
-                  _context8.next = 34;
+                  _context8.next = 33;
                   break;
 
                 case 6:
@@ -51403,6 +51404,8 @@ var ImageTracer = /*#__PURE__*/function () {
                           switch (_context7.prev = _context7.next) {
                             case 0:
                               e.preventDefault();
+                              e.stopImmediatePropagation();
+                              e.stopPropagation();
                               imageData = _this.toDataURL();
                               formData = new FormData(document.getElementById('formJira'));
                               formValues = from_entries_default()(entries_default()(formData).call(formData));
@@ -51433,7 +51436,7 @@ var ImageTracer = /*#__PURE__*/function () {
                                 });
                               }
 
-                              _context7.next = 9;
+                              _context7.next = 11;
                               return fetch("https://gorira.omnishop.app/issue?host=".concat(items.jiraServer), {
                                 method: 'POST',
                                 headers: {
@@ -51443,12 +51446,12 @@ var ImageTracer = /*#__PURE__*/function () {
                                 body: stringify_default()(formValues)
                               });
 
-                            case 9:
+                            case 11:
                               res = _context7.sent;
-                              _context7.next = 12;
+                              _context7.next = 14;
                               return res.json();
 
-                            case 12:
+                            case 14:
                               json = _context7.sent;
 
                               if (json.key) {
@@ -51461,7 +51464,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                               console.log('json', json);
 
-                            case 15:
+                            case 17:
                             case "end":
                               return _context7.stop();
                           }
@@ -51472,12 +51475,12 @@ var ImageTracer = /*#__PURE__*/function () {
                     return function createJira(_x) {
                       return _ref.apply(this, arguments);
                     };
-                  }();
+                  }(); // DOESN'T WORK: document.getElementById('formJira').removeEventListener('submit', createJira);
 
-                  document.getElementById('formJira').removeEventListener('submit', createJira);
-                  document.getElementById('formJira').addEventListener('submit', createJira);
 
-                case 34:
+                  document.getElementById('formJira').addEventListener('submit', createJira, true);
+
+                case 33:
                 case "end":
                   return _context8.stop();
               }
