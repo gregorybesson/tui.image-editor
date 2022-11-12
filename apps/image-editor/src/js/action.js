@@ -169,14 +169,23 @@ export default {
           const projects = await response.json();
           const jiraSelect = document.getElementById('jiraProjects');
           jiraSelect.innerHTML = '';
+          let option = document.createElement('option');
+          option.value = '';
+          option.text = 'Select a project';
+          document.getElementById('jiraProjects').appendChild(option);
           projects.forEach((project) => {
-            const option = document.createElement('option');
+            option = document.createElement('option');
             option.value = project.key;
             option.text = project.name;
             if (project.key.toLowerCase() === items.jiraSelectedProject.toLowerCase()) {
               option.selected = true;
             }
             document.getElementById('jiraProjects').appendChild(option);
+          });
+
+          document.getElementById('formJira').addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log('submit');
           });
 
           console.log('projects', projects);

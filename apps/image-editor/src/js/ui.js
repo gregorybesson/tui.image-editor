@@ -343,6 +343,11 @@ class Ui {
           ev.stopPropagation();
         });
       }
+
+      if (this.options.settings.jira) {
+        document.getElementById('jira-page-title').value = this.options.settings.jira.title;
+        document.getElementById('jira-page-url').value = this.options.settings.jira.url;
+      }
     });
   }
 
