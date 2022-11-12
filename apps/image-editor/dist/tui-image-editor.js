@@ -51318,8 +51318,9 @@ var ImageTracer = /*#__PURE__*/function () {
 
                               _context2.next = 9;
                               return fetch("https://gorira.omnishop.app/issue?host=".concat(items.jiraServer), {
-                                type: 'POST',
+                                method: 'POST',
                                 headers: {
+                                  'Content-Type': 'application/json',
                                   Authorization: user
                                 },
                                 data: stringify_default()(formValues)

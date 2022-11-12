@@ -200,8 +200,11 @@ export default {
             // })
 
             const res = await fetch(`https://gorira.omnishop.app/issue?host=${items.jiraServer}`, {
-              type: 'POST',
-              headers: { Authorization: user },
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: user,
+              },
               data: JSON.stringify(formValues),
             });
             const json = await res.json();
