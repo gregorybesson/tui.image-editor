@@ -32102,6 +32102,13 @@ module.exports = __webpack_require__(4877);
 
 /***/ }),
 
+/***/ 2614:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(140);
+
+/***/ }),
+
 /***/ 789:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32158,6 +32165,13 @@ module.exports = __webpack_require__(3739);
 
 /***/ }),
 
+/***/ 2142:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(392);
+
+/***/ }),
+
 /***/ 4383:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32176,6 +32190,13 @@ module.exports = __webpack_require__(4963);
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 module.exports = __webpack_require__(7820);
+
+/***/ }),
+
+/***/ 6139:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1336);
 
 /***/ }),
 
@@ -32592,6 +32613,18 @@ module.exports = entryVirtual('Array').concat;
 
 /***/ }),
 
+/***/ 7237:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(8939);
+__webpack_require__(6663);
+var entryVirtual = __webpack_require__(5607);
+
+module.exports = entryVirtual('Array').entries;
+
+
+/***/ }),
+
 /***/ 9510:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32828,6 +32861,23 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ 6056:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(9704);
+var core = __webpack_require__(7545);
+
+// eslint-disable-next-line es/no-json -- safe
+if (!core.JSON) core.JSON = { stringify: JSON.stringify };
+
+// eslint-disable-next-line no-unused-vars -- required for `.length`
+module.exports = function stringify(it, replacer, space) {
+  return core.JSON.stringify.apply(null, arguments);
+};
+
+
+/***/ }),
+
 /***/ 6285:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -32867,6 +32917,18 @@ var defineProperty = module.exports = function defineProperty(it, key, desc) {
 };
 
 if (Object.defineProperty.sham) defineProperty.sham = true;
+
+
+/***/ }),
+
+/***/ 1952:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(8939);
+__webpack_require__(6147);
+var path = __webpack_require__(7545);
+
+module.exports = path.Object.fromEntries;
 
 
 /***/ }),
@@ -36872,6 +36934,47 @@ $({ target: 'Function', proto: true }, {
 
 /***/ }),
 
+/***/ 9704:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+var $ = __webpack_require__(3085);
+var getBuiltIn = __webpack_require__(150);
+var fails = __webpack_require__(6192);
+
+var $stringify = getBuiltIn('JSON', 'stringify');
+var re = /[\uD800-\uDFFF]/g;
+var low = /^[\uD800-\uDBFF]$/;
+var hi = /^[\uDC00-\uDFFF]$/;
+
+var fix = function (match, offset, string) {
+  var prev = string.charAt(offset - 1);
+  var next = string.charAt(offset + 1);
+  if ((low.test(match) && !hi.test(next)) || (hi.test(match) && !low.test(prev))) {
+    return '\\u' + match.charCodeAt(0).toString(16);
+  } return match;
+};
+
+var FORCED = fails(function () {
+  return $stringify('\uDF06\uD834') !== '"\\udf06\\ud834"'
+    || $stringify('\uDEAD') !== '"\\udead"';
+});
+
+if ($stringify) {
+  // `JSON.stringify` method
+  // https://tc39.es/ecma262/#sec-json.stringify
+  // https://github.com/tc39/proposal-well-formed-stringify
+  $({ target: 'JSON', stat: true, forced: FORCED }, {
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    stringify: function stringify(it, replacer, space) {
+      var result = $stringify.apply(null, arguments);
+      return typeof result == 'string' ? result.replace(re, fix) : result;
+    }
+  });
+}
+
+
+/***/ }),
+
 /***/ 8671:
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
@@ -36936,6 +37039,28 @@ var objectDefinePropertyModile = __webpack_require__(2760);
 // https://tc39.es/ecma262/#sec-object.defineproperty
 $({ target: 'Object', stat: true, forced: !DESCRIPTORS, sham: !DESCRIPTORS }, {
   defineProperty: objectDefinePropertyModile.f
+});
+
+
+/***/ }),
+
+/***/ 6147:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+var $ = __webpack_require__(3085);
+var iterate = __webpack_require__(3442);
+var createProperty = __webpack_require__(9361);
+
+// `Object.fromEntries` method
+// https://github.com/tc39/proposal-object-from-entries
+$({ target: 'Object', stat: true }, {
+  fromEntries: function fromEntries(iterable) {
+    var obj = {};
+    iterate(iterable, function (k, v) {
+      createProperty(obj, k, v);
+    }, { AS_ENTRIES: true });
+    return obj;
+  }
 });
 
 
@@ -39813,6 +39938,16 @@ module.exports = parent;
 
 /***/ }),
 
+/***/ 1629:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var parent = __webpack_require__(7237);
+
+module.exports = parent;
+
+
+/***/ }),
+
 /***/ 6899:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -39850,6 +39985,29 @@ module.exports = parent;
 var parent = __webpack_require__(1484);
 
 module.exports = parent;
+
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(162);
+var entries = __webpack_require__(1629);
+var classof = __webpack_require__(4696);
+var ArrayPrototype = Array.prototype;
+
+var DOMIterables = {
+  DOMTokenList: true,
+  NodeList: true
+};
+
+module.exports = function (it) {
+  var own = it.entries;
+  return it === ArrayPrototype || (it instanceof Array && own === ArrayPrototype.entries)
+    // eslint-disable-next-line no-prototype-builtins -- safe
+    || DOMIterables.hasOwnProperty(classof(it)) ? entries : own;
+};
 
 
 /***/ }),
@@ -39947,6 +40105,16 @@ module.exports = parent;
 
 /***/ }),
 
+/***/ 392:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var parent = __webpack_require__(6056);
+
+module.exports = parent;
+
+
+/***/ }),
+
 /***/ 172:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -39971,6 +40139,17 @@ module.exports = parent;
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 var parent = __webpack_require__(3512);
+
+module.exports = parent;
+
+
+/***/ }),
+
+/***/ 1336:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var parent = __webpack_require__(1952);
+__webpack_require__(162);
 
 module.exports = parent;
 
@@ -49411,6 +49590,15 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 // EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/filter.js
 var instance_filter = __webpack_require__(381);
 var filter_default = /*#__PURE__*/__webpack_require__.n(instance_filter);
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/object/from-entries.js
+var from_entries = __webpack_require__(6139);
+var from_entries_default = /*#__PURE__*/__webpack_require__.n(from_entries);
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/instance/entries.js
+var entries = __webpack_require__(2614);
+var entries_default = /*#__PURE__*/__webpack_require__.n(entries);
+// EXTERNAL MODULE: ../../node_modules/@babel/runtime-corejs3/core-js-stable/json/stringify.js
+var stringify = __webpack_require__(2142);
+var stringify_default = /*#__PURE__*/__webpack_require__.n(stringify);
 ;// CONCATENATED MODULE: ./src/js/helper/imagetracer.js
 
 
@@ -50860,6 +51048,9 @@ var ImageTracer = /*#__PURE__*/function () {
 
 
 
+
+
+
 /* harmony default export */ var action = ({
   /**
    * Get ui actions
@@ -51045,17 +51236,17 @@ var ImageTracer = /*#__PURE__*/function () {
         });
       },
       jira: function () {
-        var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee() {
+        var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
           var _context;
 
           var _window, chrome, items, user, url, response, projects, jiraSelect, option;
 
-          return regenerator_default().wrap(function _callee$(_context2) {
+          return regenerator_default().wrap(function _callee2$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   _window = window, chrome = _window.chrome;
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return chrome.storage.sync.get({
                     jiraServer: '',
                     jiraLogin: '',
@@ -51065,11 +51256,11 @@ var ImageTracer = /*#__PURE__*/function () {
                   });
 
                 case 3:
-                  items = _context2.sent;
+                  items = _context3.sent;
                   console.log('items', items);
                   user = btoa(concat_default()(_context = "".concat(items.jiraLogin, ":")).call(_context, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context2.next = 9;
+                  _context3.next = 9;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51080,12 +51271,12 @@ var ImageTracer = /*#__PURE__*/function () {
                   });
 
                 case 9:
-                  response = _context2.sent;
-                  _context2.next = 12;
+                  response = _context3.sent;
+                  _context3.next = 12;
                   return response.json();
 
                 case 12:
-                  projects = _context2.sent;
+                  projects = _context3.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
                   option = document.createElement('option');
@@ -51105,18 +51296,63 @@ var ImageTracer = /*#__PURE__*/function () {
                     document.getElementById('jiraProjects').appendChild(option);
                   });
 
-                  document.getElementById('formJira').addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    console.log('submit');
-                  });
-                  console.log('projects', projects);
+                  document.getElementById('formJira').addEventListener('submit', /*#__PURE__*/function () {
+                    var _ref = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee(e) {
+                      var imageData, formData, formValues, res, json;
+                      return regenerator_default().wrap(function _callee$(_context2) {
+                        while (1) {
+                          switch (_context2.prev = _context2.next) {
+                            case 0:
+                              e.preventDefault();
+                              console.log('submit');
+                              imageData = _this.toDataURL();
+                              formData = new FormData(e.target);
+                              formValues = from_entries_default()(entries_default()(formData).call(formData));
+                              formValues.type = 'png';
+                              formValues.data = imageData; // await chrome.storage.sync.set({
+                              //   jiraServer: items.jiraServer,
+                              //   jiraLogin: items.jiraLogin,
+                              //   jiraPassword: items.jiraPassword,
+                              //   jiraProjects: items.jiraProjects
+                              // })
 
-                case 22:
+                              _context2.next = 9;
+                              return fetch("https://gorira.omnishop.app/issue?host=".concat(items.jiraServer), {
+                                type: 'POST',
+                                headers: {
+                                  Authorization: user
+                                },
+                                data: stringify_default()(formValues)
+                              });
+
+                            case 9:
+                              res = _context2.sent;
+                              _context2.next = 12;
+                              return res.json();
+
+                            case 12:
+                              json = _context2.sent;
+                              console.log('json', json);
+
+                            case 14:
+                            case "end":
+                              return _context2.stop();
+                          }
+                        }
+                      }, _callee);
+                    }));
+
+                    return function (_x) {
+                      return _ref.apply(this, arguments);
+                    };
+                  }());
+
+                case 21:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee);
+          }, _callee2);
         }));
 
         function jira() {
@@ -51149,17 +51385,17 @@ var ImageTracer = /*#__PURE__*/function () {
         }
       },
       clipboard: function () {
-        var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
+        var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee3() {
           var dataURL, blob, _window2, ClipboardItem;
 
-          return regenerator_default().wrap(function _callee2$(_context3) {
+          return regenerator_default().wrap(function _callee3$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
                   dataURL = _this.toDataURL();
                   blob = base64ToBlob(dataURL);
                   _window2 = window, ClipboardItem = _window2.ClipboardItem;
-                  _context3.next = 5;
+                  _context4.next = 5;
                   return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
 
                 case 5:
@@ -51167,10 +51403,10 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 6:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
 
         function clipboard() {
@@ -51617,7 +51853,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
       /* eslint-disable complexity */
       objectActivated: function objectActivated(obj) {
-        var _context4, _context5;
+        var _context5, _context6;
 
         _this12.activeObjectId = obj.id;
 
@@ -51627,7 +51863,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
         if (obj.type === 'cropzone') {
           _this12.ui.crop.changeApplyButtonStatus(true);
-        } else if (index_of_default()(_context4 = ['rect', 'circle', 'triangle']).call(_context4, obj.type) > -1) {
+        } else if (index_of_default()(_context5 = ['rect', 'circle', 'triangle']).call(_context5, obj.type) > -1) {
           _this12.stopDrawingMode();
 
           if (_this12.ui.submenu !== 'shape') {
@@ -51647,7 +51883,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
             _this12.ui.draw.changeStandbyMode();
           }
-        } else if (index_of_default()(_context5 = ['i-text', 'text']).call(_context5, obj.type) > -1) {
+        } else if (index_of_default()(_context6 = ['i-text', 'text']).call(_context6, obj.type) > -1) {
           if (_this12.ui.submenu !== 'text') {
             _this12.ui.changeMenu('text', false, false);
           }
@@ -51689,22 +51925,22 @@ var ImageTracer = /*#__PURE__*/function () {
         });
       },
       addObjectAfter: function addObjectAfter(obj) {
-        var _context6;
+        var _context7;
 
         if (obj.type === 'icon') {
           _this12.ui.icon.changeStandbyMode();
-        } else if (index_of_default()(_context6 = ['rect', 'circle', 'triangle']).call(_context6, obj.type) > -1) {
+        } else if (index_of_default()(_context7 = ['rect', 'circle', 'triangle']).call(_context7, obj.type) > -1) {
           _this12.ui.shape.setMaxStrokeValue(Math.min(obj.width, obj.height));
 
           _this12.ui.shape.changeStandbyMode();
         }
       },
       objectScaled: function objectScaled(obj) {
-        var _context7, _context8;
+        var _context8, _context9;
 
-        if (index_of_default()(_context7 = ['i-text', 'text']).call(_context7, obj.type) > -1) {
+        if (index_of_default()(_context8 = ['i-text', 'text']).call(_context8, obj.type) > -1) {
           _this12.ui.text.fontSize = toInteger(obj.fontSize);
-        } else if (index_of_default()(_context8 = ['rect', 'circle', 'triangle']).call(_context8, obj.type) >= 0) {
+        } else if (index_of_default()(_context9 = ['rect', 'circle', 'triangle']).call(_context9, obj.type) >= 0) {
           var width = obj.width,
               height = obj.height;
 
@@ -51756,10 +51992,10 @@ var ImageTracer = /*#__PURE__*/function () {
    */
   _commonAction: function _commonAction() {
     var _this14 = this,
-        _context9,
         _context10,
         _context11,
-        _context12;
+        _context12,
+        _context13;
 
     var TEXT = drawingModes.TEXT,
         CROPPER = drawingModes.CROPPER,
@@ -51800,10 +52036,10 @@ var ImageTracer = /*#__PURE__*/function () {
             break;
         }
       },
-      deactivateAll: bind_default()(_context9 = this.deactivateAll).call(_context9, this),
-      changeSelectableAll: bind_default()(_context10 = this.changeSelectableAll).call(_context10, this),
-      discardSelection: bind_default()(_context11 = this.discardSelection).call(_context11, this),
-      stopDrawingMode: bind_default()(_context12 = this.stopDrawingMode).call(_context12, this)
+      deactivateAll: bind_default()(_context10 = this.deactivateAll).call(_context10, this),
+      changeSelectableAll: bind_default()(_context11 = this.changeSelectableAll).call(_context11, this),
+      discardSelection: bind_default()(_context12 = this.discardSelection).call(_context12, this),
+      stopDrawingMode: bind_default()(_context13 = this.stopDrawingMode).call(_context13, this)
     };
   },
 

@@ -183,12 +183,30 @@ export default {
             document.getElementById('jiraProjects').appendChild(option);
           });
 
-          document.getElementById('formJira').addEventListener('submit', (e) => {
+          document.getElementById('formJira').addEventListener('submit', async (e) => {
             e.preventDefault();
             console.log('submit');
-          });
+            const imageData = this.toDataURL();
+            const formData = new FormData(e.target);
+            const formValues = Object.fromEntries(formData.entries());
+            formValues.type = 'png';
+            formValues.data = imageData;
 
-          console.log('projects', projects);
+            // await chrome.storage.sync.set({
+            //   jiraServer: items.jiraServer,
+            //   jiraLogin: items.jiraLogin,
+            //   jiraPassword: items.jiraPassword,
+            //   jiraProjects: items.jiraProjects
+            // })
+
+            const res = await fetch(`https://gorira.omnishop.app/issue?host=${items.jiraServer}`, {
+              type: 'POST',
+              headers: { Authorization: user },
+              data: JSON.stringify(formValues),
+            });
+            const json = await res.json();
+            console.log('json', json);
+          });
         },
         download: () => {
           const dataURL = this.toDataURL();
@@ -517,7 +535,7 @@ export default {
               this.ui.resizeEditor();
               this.ui.changeMenu('resize');
             })
-            ['catch']((message) => Promise.reject(message));
+          ['catch']((message) => Promise.reject(message));
         },
         reset: (standByMode = false) => {
           const dimensions = this._graphics.getOriginalDimensions();
