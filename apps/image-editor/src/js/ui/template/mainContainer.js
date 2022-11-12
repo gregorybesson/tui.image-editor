@@ -50,6 +50,9 @@ export default ({
                 <form id="formJira" style="display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;">
                     <input type="hidden" name="page-title" id="jira-page-title"/>
                     <input type="hidden" name="page-url" id="jira-page-url"/>
+                    <h2 id="jira-issue" style="display: none; background-color: yellowgreen; width: 100%; padding: 1rem;">
+                        Issue created: <a id="jira-issue-id" href="></a>
+                    </h2>
                     <div class="form-group" style="padding: 1rem 0 0; text-align: left;">
                         <label for="jiraProjects">Project <superscript>*</superscript></label><br/>
                         <select name="key" id="jiraProjects" style="user-select: auto;" required></select>

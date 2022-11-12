@@ -191,7 +191,6 @@ export default {
 
             const createJira = async (e) => {
               e.preventDefault();
-              console.log('submit');
               const imageData = this.toDataURL();
               const formData = new FormData(document.getElementById('formJira'));
               const formValues = Object.fromEntries(formData.entries());
@@ -217,6 +216,16 @@ export default {
                 }
               );
               const json = await res.json();
+              if (json.key) {
+                const jiraIssue = document.getElementById('jira-issue');
+                const jiraId = document.getElementById('jira-issue-id');
+                jiraIssue.style.display = 'block';
+                jiraId.innerHTML = json.key;
+                jiraId.href = `${items.jiraServer}/browse/${json.key}`;
+                setTimeout(() => {
+                  jiraIssue.style.display = 'none';
+                }, 5000);
+              }
               console.log('json', json);
             };
 

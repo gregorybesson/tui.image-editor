@@ -43583,7 +43583,7 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       submenuStyle = _ref.submenuStyle;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <style>\n      .tui-image-editor-jira {\n        transform: translateX(100%);\n        -webkit-transform: translateX(100%);\n        position: absolute;\n        right: 10px;\n        background-color: #fff;\n        width: 500px;\n        height: 100%;\n        z-index: 2;\n        border: 0;\n        transition: transform .5s ease;\n      }\n      \n      .tui-image-editor-jira.show {\n        transform: translateX(0);\n        -webkit-transform: translateX(0);\n        border-left: black 1px solid;\n      }\n    </style>\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\">\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0; text-align: left;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"10\" cols=\"45\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <style>\n      .tui-image-editor-jira {\n        transform: translateX(100%);\n        -webkit-transform: translateX(100%);\n        position: absolute;\n        right: 10px;\n        background-color: #fff;\n        width: 500px;\n        height: 100%;\n        z-index: 2;\n        border: 0;\n        transition: transform .5s ease;\n      }\n      \n      .tui-image-editor-jira.show {\n        transform: translateX(0);\n        -webkit-transform: translateX(0);\n        border-left: black 1px solid;\n      }\n    </style>\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\">\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <h2 id=\"jira-issue\" style=\"display: none; background-color: yellowgreen; width: 100%; padding: 1rem;\">\n                        Issue created: <a id=\"jira-issue-id\" href=\"></a>\n                    </h2>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0; text-align: left;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"10\" cols=\"45\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
 });
 ;// CONCATENATED MODULE: ./src/js/ui/template/controls.js
 
@@ -51051,6 +51051,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
 
 
+
 /* harmony default export */ var action = ({
   /**
    * Get ui actions
@@ -51239,26 +51240,26 @@ var ImageTracer = /*#__PURE__*/function () {
         var _jira = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee2() {
           var jiraDiv, isOpen, _context, _window, chrome, items, user, url, response, projects, jiraSelect, option, createJira;
 
-          return regenerator_default().wrap(function _callee2$(_context3) {
+          return regenerator_default().wrap(function _callee2$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
                   jiraDiv = document.querySelector('.tui-image-editor-jira');
                   isOpen = jiraDiv.classList.contains('show');
 
                   if (!isOpen) {
-                    _context3.next = 6;
+                    _context4.next = 6;
                     break;
                   }
 
                   jiraDiv.classList.remove('show');
-                  _context3.next = 30;
+                  _context4.next = 30;
                   break;
 
                 case 6:
                   jiraDiv.classList.add('show');
                   _window = window, chrome = _window.chrome;
-                  _context3.next = 10;
+                  _context4.next = 10;
                   return chrome.storage.sync.get({
                     jiraServer: '',
                     jiraLogin: '',
@@ -51268,11 +51269,11 @@ var ImageTracer = /*#__PURE__*/function () {
                   });
 
                 case 10:
-                  items = _context3.sent;
+                  items = _context4.sent;
                   console.log('items', items);
                   user = btoa(concat_default()(_context = "".concat(items.jiraLogin, ":")).call(_context, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context3.next = 16;
+                  _context4.next = 16;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51283,12 +51284,12 @@ var ImageTracer = /*#__PURE__*/function () {
                   });
 
                 case 16:
-                  response = _context3.sent;
-                  _context3.next = 19;
+                  response = _context4.sent;
+                  _context4.next = 19;
                   return response.json();
 
                 case 19:
-                  projects = _context3.sent;
+                  projects = _context4.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
                   option = document.createElement('option');
@@ -51310,13 +51311,13 @@ var ImageTracer = /*#__PURE__*/function () {
 
                   createJira = /*#__PURE__*/function () {
                     var _ref = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee(e) {
-                      var imageData, formData, formValues, res, json;
-                      return regenerator_default().wrap(function _callee$(_context2) {
+                      var imageData, formData, formValues, res, json, _context2, jiraIssue, jiraId;
+
+                      return regenerator_default().wrap(function _callee$(_context3) {
                         while (1) {
-                          switch (_context2.prev = _context2.next) {
+                          switch (_context3.prev = _context3.next) {
                             case 0:
                               e.preventDefault();
-                              console.log('submit');
                               imageData = _this.toDataURL();
                               formData = new FormData(document.getElementById('formJira'));
                               formValues = from_entries_default()(entries_default()(formData).call(formData));
@@ -51328,7 +51329,7 @@ var ImageTracer = /*#__PURE__*/function () {
                               //   jiraProjects: items.jiraProjects
                               // })
 
-                              _context2.next = 9;
+                              _context3.next = 8;
                               return fetch("https://gorira.omnishop.app/issue?host=".concat(items.jiraServer), {
                                 method: 'POST',
                                 headers: {
@@ -51338,18 +51339,31 @@ var ImageTracer = /*#__PURE__*/function () {
                                 body: stringify_default()(formValues)
                               });
 
-                            case 9:
-                              res = _context2.sent;
-                              _context2.next = 12;
+                            case 8:
+                              res = _context3.sent;
+                              _context3.next = 11;
                               return res.json();
 
-                            case 12:
-                              json = _context2.sent;
+                            case 11:
+                              json = _context3.sent;
+
+                              if (json.key) {
+                                jiraIssue = document.getElementById('jira-issue');
+                                jiraId = document.getElementById('jira-issue-id');
+                                jiraIssue.style.display = 'block';
+                                jiraId.innerHTML = json.key;
+                                jiraId.href = concat_default()(_context2 = "".concat(items.jiraServer, "/browse/")).call(_context2, json.key);
+
+                                set_timeout_default()(function () {
+                                  jiraIssue.style.display = 'none';
+                                }, 5000);
+                              }
+
                               console.log('json', json);
 
                             case 14:
                             case "end":
-                              return _context2.stop();
+                              return _context3.stop();
                           }
                         }
                       }, _callee);
@@ -51365,7 +51379,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 30:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
           }, _callee2);
@@ -51404,14 +51418,14 @@ var ImageTracer = /*#__PURE__*/function () {
         var _clipboard = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee3() {
           var dataURL, blob, _window2, ClipboardItem;
 
-          return regenerator_default().wrap(function _callee3$(_context4) {
+          return regenerator_default().wrap(function _callee3$(_context5) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
                   dataURL = _this.toDataURL();
                   blob = base64ToBlob(dataURL);
                   _window2 = window, ClipboardItem = _window2.ClipboardItem;
-                  _context4.next = 5;
+                  _context5.next = 5;
                   return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
 
                 case 5:
@@ -51419,7 +51433,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 6:
                 case "end":
-                  return _context4.stop();
+                  return _context5.stop();
               }
             }
           }, _callee3);
@@ -51869,7 +51883,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
       /* eslint-disable complexity */
       objectActivated: function objectActivated(obj) {
-        var _context5, _context6;
+        var _context6, _context7;
 
         _this12.activeObjectId = obj.id;
 
@@ -51879,7 +51893,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
         if (obj.type === 'cropzone') {
           _this12.ui.crop.changeApplyButtonStatus(true);
-        } else if (index_of_default()(_context5 = ['rect', 'circle', 'triangle']).call(_context5, obj.type) > -1) {
+        } else if (index_of_default()(_context6 = ['rect', 'circle', 'triangle']).call(_context6, obj.type) > -1) {
           _this12.stopDrawingMode();
 
           if (_this12.ui.submenu !== 'shape') {
@@ -51899,7 +51913,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
             _this12.ui.draw.changeStandbyMode();
           }
-        } else if (index_of_default()(_context6 = ['i-text', 'text']).call(_context6, obj.type) > -1) {
+        } else if (index_of_default()(_context7 = ['i-text', 'text']).call(_context7, obj.type) > -1) {
           if (_this12.ui.submenu !== 'text') {
             _this12.ui.changeMenu('text', false, false);
           }
@@ -51941,22 +51955,22 @@ var ImageTracer = /*#__PURE__*/function () {
         });
       },
       addObjectAfter: function addObjectAfter(obj) {
-        var _context7;
+        var _context8;
 
         if (obj.type === 'icon') {
           _this12.ui.icon.changeStandbyMode();
-        } else if (index_of_default()(_context7 = ['rect', 'circle', 'triangle']).call(_context7, obj.type) > -1) {
+        } else if (index_of_default()(_context8 = ['rect', 'circle', 'triangle']).call(_context8, obj.type) > -1) {
           _this12.ui.shape.setMaxStrokeValue(Math.min(obj.width, obj.height));
 
           _this12.ui.shape.changeStandbyMode();
         }
       },
       objectScaled: function objectScaled(obj) {
-        var _context8, _context9;
+        var _context9, _context10;
 
-        if (index_of_default()(_context8 = ['i-text', 'text']).call(_context8, obj.type) > -1) {
+        if (index_of_default()(_context9 = ['i-text', 'text']).call(_context9, obj.type) > -1) {
           _this12.ui.text.fontSize = toInteger(obj.fontSize);
-        } else if (index_of_default()(_context9 = ['rect', 'circle', 'triangle']).call(_context9, obj.type) >= 0) {
+        } else if (index_of_default()(_context10 = ['rect', 'circle', 'triangle']).call(_context10, obj.type) >= 0) {
           var width = obj.width,
               height = obj.height;
 
@@ -52008,10 +52022,10 @@ var ImageTracer = /*#__PURE__*/function () {
    */
   _commonAction: function _commonAction() {
     var _this14 = this,
-        _context10,
         _context11,
         _context12,
-        _context13;
+        _context13,
+        _context14;
 
     var TEXT = drawingModes.TEXT,
         CROPPER = drawingModes.CROPPER,
@@ -52052,10 +52066,10 @@ var ImageTracer = /*#__PURE__*/function () {
             break;
         }
       },
-      deactivateAll: bind_default()(_context10 = this.deactivateAll).call(_context10, this),
-      changeSelectableAll: bind_default()(_context11 = this.changeSelectableAll).call(_context11, this),
-      discardSelection: bind_default()(_context12 = this.discardSelection).call(_context12, this),
-      stopDrawingMode: bind_default()(_context13 = this.stopDrawingMode).call(_context13, this)
+      deactivateAll: bind_default()(_context11 = this.deactivateAll).call(_context11, this),
+      changeSelectableAll: bind_default()(_context12 = this.changeSelectableAll).call(_context12, this),
+      discardSelection: bind_default()(_context13 = this.discardSelection).call(_context13, this),
+      stopDrawingMode: bind_default()(_context14 = this.stopDrawingMode).call(_context14, this)
     };
   },
 
