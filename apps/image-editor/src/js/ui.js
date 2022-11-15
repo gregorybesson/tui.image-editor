@@ -394,6 +394,8 @@ class Ui {
       controls({
         locale: this._locale,
         biImage: this.theme.getStyle('common.bi'),
+        jiraButtonStyle: this.theme.getStyle('jiraButton'),
+        shareButtonStyle: this.theme.getStyle('shareButton'),
         loadButtonStyle: this.theme.getStyle('loadButton'),
         downloadButtonStyle: this.theme.getStyle('downloadButton'),
         menuBarPosition: this.options.menuBarPosition,
@@ -403,6 +405,8 @@ class Ui {
         biImage: this.theme.getStyle('common.bi'),
         commonStyle: this.theme.getStyle('common'),
         headerStyle: this.theme.getStyle('header'),
+        jiraButtonStyle: this.theme.getStyle('jiraButton'),
+        shareButtonStyle: this.theme.getStyle('shareButton'),
         loadButtonStyle: this.theme.getStyle('loadButton'),
         downloadButtonStyle: this.theme.getStyle('downloadButton'),
         submenuStyle: this.theme.getStyle('submenu'),
@@ -418,6 +422,7 @@ class Ui {
     this._menuBarElement = selector('.tui-image-editor-menu');
     this._subMenuElement = selector('.tui-image-editor-submenu');
     this._buttonElements = {
+      share: this._selectedElement.querySelectorAll('.tui-image-editor-share-btn'),
       jira: this._selectedElement.querySelectorAll('.tui-image-editor-jira-btn'),
       download: this._selectedElement.querySelectorAll('.tui-image-editor-download-btn'),
       clipboard: this._selectedElement.querySelectorAll('.tui-image-editor-clipboard-btn'),
@@ -653,6 +658,23 @@ class Ui {
   }
 
   /**
+   * Add share event
+   * @private
+   */
+  _addShareEvent() {
+    this.eventHandler.share = () => this._actions.main.share();
+    forEach(this._buttonElements.share, (element) => {
+      element.addEventListener('click', this.eventHandler.share);
+    });
+  }
+
+  _removeShareEvent() {
+    forEach(this._buttonElements.share, (element) => {
+      element.removeEventListener('click', this.eventHandler.share);
+    });
+  }
+
+  /**
    * Add load event
    * @private
    */
@@ -744,6 +766,7 @@ class Ui {
     this._addDownloadEvent();
     this._addClipboardEvent();
     this._addJiraEvent();
+    this._addShareEvent();
     this._addMenuEvent();
     this._initMenu();
     this._historyMenu.addEvent(this._actions.history);
@@ -759,6 +782,7 @@ class Ui {
     this._removeDownloadEvent();
     this._removeClipboardEvent();
     this._removeJiraEvent();
+    this._removeShareEvent();
     this._removeLoadEvent();
     this._removeMainMenuEvent();
     this._historyMenu.removeEvent();

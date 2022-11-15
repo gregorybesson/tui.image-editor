@@ -146,6 +146,23 @@ export default {
             })
             ['catch']((message) => Promise.reject(message));
         },
+        share: async () => {
+          const imageData = this.toDataURL();
+          const formValues = {};
+          formValues.type = 'png';
+          formValues.data = imageData;
+          const res = await fetch(`https://gorira.omnishop.app/share`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formValues),
+          });
+          const json = await res.json();
+          if (json.path) {
+            const url = `https://gorira.omnishop.app/${json.path}`;
+            console.log('url', url);
+          }
+          console.log('json', json);
+        },
         jira: async () => {
           const jiraDiv = document.querySelector('.tui-image-editor-jira');
           const isOpen = jiraDiv.classList.contains('show');

@@ -10,6 +10,16 @@
  * @property {string} header.backgroundImage - header area background
  * @property {string} header.backgroundColor - header area background color
  * @property {string} header.border - header area border style
+ * @property {string} shareButton.backgroundColor - load button background color
+ * @property {string} shareButton.border - load button border style
+ * @property {string} shareButton.color - load button foreground color
+ * @property {string} shareButton.fontFamily - load button font type
+ * @property {string} shareButton.fontSize - load button font size
+ * @property {string} jiraButton.backgroundColor - load button background color
+ * @property {string} jiraButton.border - load button border style
+ * @property {string} jiraButton.color - load button foreground color
+ * @property {string} jiraButton.fontFamily - load button font type
+ * @property {string} jiraButton.fontSize - load button font size
  * @property {string} loadButton.backgroundColor - load button background color
  * @property {string} loadButton.border - load button border style
  * @property {string} loadButton.color - load button foreground color
@@ -76,6 +86,20 @@
     'header.backgroundImage': 'none',
     'header.backgroundColor': 'transparent',
     'header.border': '0px',
+
+    // share button
+    'shareButton.backgroundColor': '#fff',
+    'shareButton.border': '1px solid #ddd',
+    'shareButton.color': '#222',
+    'shareButton.fontFamily': 'NotoSans, sans-serif',
+    'shareButton.fontSize': '12px',
+
+    // jira button
+    'jiraButton.backgroundColor': '#fff',
+    'jiraButton.border': '1px solid #ddd',
+    'jiraButton.color': '#222',
+    'jiraButton.fontFamily': 'NotoSans, sans-serif',
+    'jiraButton.fontSize': '12px',
 
     // load button
     'loadButton.backgroundColor': '#fff',
@@ -152,6 +176,20 @@ export default {
   'header.backgroundImage': 'none',
   'header.backgroundColor': 'transparent',
   'header.border': '0px',
+
+  // share button
+  'shareButton.backgroundColor': '#fff',
+  'shareButton.border': '1px solid #ddd',
+  'shareButton.color': '#222',
+  'shareButton.fontFamily': "'Noto Sans', sans-serif",
+  'shareButton.fontSize': '12px',
+
+  // jira button
+  'jiraButton.backgroundColor': '#fff',
+  'jiraButton.border': '1px solid #ddd',
+  'jiraButton.color': '#222',
+  'jiraButton.fontFamily': "'Noto Sans', sans-serif",
+  'jiraButton.fontSize': '12px',
 
   // load button
   'loadButton.backgroundColor': '#fff',
