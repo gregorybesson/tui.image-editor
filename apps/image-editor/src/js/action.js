@@ -147,21 +147,30 @@ export default {
             ['catch']((message) => Promise.reject(message));
         },
         share: async () => {
-          const imageData = this.toDataURL();
-          const formValues = {};
-          formValues.type = 'png';
-          formValues.data = imageData;
-          const res = await fetch(`https://gorira.omnishop.app/share`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formValues),
-          });
-          const json = await res.json();
-          if (json.path) {
-            const url = `https://gorira.omnishop.app/${json.path}`;
-            console.log('url', url);
+          const shareDiv = document.querySelector('.tui-image-editor-share');
+          const isOpen = shareDiv.classList.contains('show');
+          if (isOpen) {
+            shareDiv.classList.remove('show');
+          } else {
+            shareDiv.classList.add('show');
+            const imageData = this.toDataURL();
+            const formValues = {};
+            formValues.type = 'png';
+            formValues.data = imageData;
+            const res = await fetch(`https://gorira.omnishop.app/share`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formValues),
+            });
+            const json = await res.json();
+            if (json.path) {
+              const url = `https://gorira.omnishop.app/${json.path}`;
+              console.log('url', url);
+              document.getElementById('share-link').href = url;
+              document.getElementById('share-link').innerText = url;
+            }
+            console.log('json', json);
           }
-          console.log('json', json);
         },
         jira: async () => {
           const jiraDiv = document.querySelector('.tui-image-editor-jira');

@@ -51388,16 +51388,30 @@ var ImageTracer = /*#__PURE__*/function () {
       },
       share: function () {
         var _share = _asyncToGenerator( /*#__PURE__*/regenerator_default().mark(function _callee() {
-          var imageData, formValues, res, json, url;
+          var shareDiv, isOpen, imageData, formValues, res, json, url;
           return regenerator_default().wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
+                  shareDiv = document.querySelector('.tui-image-editor-share');
+                  isOpen = shareDiv.classList.contains('show');
+
+                  if (!isOpen) {
+                    _context.next = 6;
+                    break;
+                  }
+
+                  shareDiv.classList.remove('show');
+                  _context.next = 19;
+                  break;
+
+                case 6:
+                  shareDiv.classList.add('show');
                   imageData = _this.toDataURL();
                   formValues = {};
                   formValues.type = 'png';
                   formValues.data = imageData;
-                  _context.next = 6;
+                  _context.next = 13;
                   return fetch("https://gorira.omnishop.app/share", {
                     method: 'POST',
                     headers: {
@@ -51406,22 +51420,24 @@ var ImageTracer = /*#__PURE__*/function () {
                     body: stringify_default()(formValues)
                   });
 
-                case 6:
+                case 13:
                   res = _context.sent;
-                  _context.next = 9;
+                  _context.next = 16;
                   return res.json();
 
-                case 9:
+                case 16:
                   json = _context.sent;
 
                   if (json.path) {
                     url = "https://gorira.omnishop.app/".concat(json.path);
                     console.log('url', url);
+                    document.getElementById('share-link').href = url;
+                    document.getElementById('share-link').innerText = url;
                   }
 
                   console.log('json', json);
 
-                case 12:
+                case 19:
                 case "end":
                   return _context.stop();
               }
