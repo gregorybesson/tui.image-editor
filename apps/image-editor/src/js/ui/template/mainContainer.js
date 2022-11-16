@@ -8,7 +8,7 @@ export default ({
   submenuStyle,
 }) => `
     <style>
-      .tui-image-editor-jira {
+      .tui-image-editor-jira, tui-image-editor-share {
         transform: translateX(100%);
         -webkit-transform: translateX(100%);
         position: absolute;
@@ -21,7 +21,7 @@ export default ({
         transition: transform .5s ease;
       }
       
-      .tui-image-editor-jira.show {
+      .tui-image-editor-jira.show, .tui-image-editor-share.show {
         transform: translateX(0);
         -webkit-transform: translateX(0);
         border-left: black 1px solid;
@@ -73,6 +73,15 @@ export default ({
                     </div>
                     <button type="submit" title="Create a ticket" class="btn btn-primary share">Send to Jira</button>
                 </form>
+            </div>
+            <div class="tui-image-editor-share">
+                <h2>Share</h2>
+                <div> Congratulations! Your image is ready to share: Use the link below to share your screenshot<br/>
+                    CAUTION: This link is public and anyone with the link can view your screenshot. <br/>
+                </div>
+                <div>
+                    <a href="#" id="share-link" target="_blank"></a>
+                </div>
             </div>
             <div class="tui-image-editor-wrap">
                 <div class="tui-image-editor-size-wrap">
