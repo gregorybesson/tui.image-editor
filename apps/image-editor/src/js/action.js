@@ -164,10 +164,8 @@ export default {
             });
             const json = await res.json();
             if (json.path) {
-              const url = `https://gorira.omnishop.app/${json.path}`;
-              console.log('url', url);
-              document.getElementById('share-link').href = url;
-              document.getElementById('share-link').innerText = url;
+              document.getElementById('share-link').href = json.path;
+              document.getElementById('share-link').innerText = json.path;
             }
             console.log('json', json);
           }
