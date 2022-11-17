@@ -8,7 +8,7 @@ export default ({
   submenuStyle,
 }) => `
     <style>
-      .tui-image-editor-jira, tui-image-editor-share {
+      .tui-image-editor-jira, .tui-image-editor-share {
         transform: translateX(100%);
         -webkit-transform: translateX(100%);
         position: absolute;
