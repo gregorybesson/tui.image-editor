@@ -86,7 +86,7 @@ export default ({
                     CAUTION: This link is public and anyone with the link can view your screenshot. <br/>
                 </div>
                 <div style="margin-top: 2rem;">
-                    <img id="share-img" src="" />
+                    <img id="share-img" src="" style="width:100%;"/>
                 </div>
                 <divstyle="margin-top: 2rem;">
                     <a href="#" id="share-link" target="_blank"></a>
