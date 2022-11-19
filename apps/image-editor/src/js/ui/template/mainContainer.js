@@ -48,9 +48,10 @@ export default ({
             </div>
             <div class="tui-image-editor-jira">
                 <div id="jira-message" style="display: none;">
-                    You need to configure your Jira connection. It's here:
-                    <img src="https://gorira.omnishop.app/gorira/jira-settings.png" />
-                    <i>(And don't forget to create your Jira token following this link: <a href="https://id.atlassian.com/manage-profile/security/api-tokens">https://id.atlassian.com/manage-profile/security/api-tokens</a>)</i>
+
+                    <h2>You need to configure your Jira connection. It's here:</h2>
+                    <div><img src="https://gorira.omnishop.app/gorira/jira-settings.png" /></div>
+                    <div style="margin-top: 2rem;">(And don't forget to create your Jira token following this link: <a href="https://id.atlassian.com/manage-profile/security/api-tokens">https://id.atlassian.com/manage-profile/security/api-tokens</a>)</div>
                 </div>
                 <form id="formJira" style="display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;">
                     <input type="hidden" name="page-title" id="jira-page-title"/>
