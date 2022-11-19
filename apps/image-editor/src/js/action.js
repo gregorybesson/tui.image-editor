@@ -166,6 +166,7 @@ export default {
             if (json.path) {
               document.getElementById('share-link').href = json.path;
               document.getElementById('share-link').innerText = json.path;
+              document.getElementById('share-img').src = json.path;
             }
             console.log('json', json);
           }

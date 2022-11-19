@@ -80,12 +80,15 @@ export default ({
                     <button type="submit" title="Create a ticket" class="btn btn-primary share">Send to Jira</button>
                 </form>
             </div>
-            <div class="tui-image-editor-share">
+            <div class="tui-image-editor-share" style="padding-top: 2rem;">
                 <h2>Share</h2>
                 <div> Congratulations! Your image is ready to share: Use the link below to share your screenshot<br/>
                     CAUTION: This link is public and anyone with the link can view your screenshot. <br/>
                 </div>
-                <div>
+                <div style="margin-top: 2rem;">
+                    <img id="share-img" src="" />
+                </div>
+                <divstyle="margin-top: 2rem;">
                     <a href="#" id="share-link" target="_blank"></a>
                 </div>
             </div>
