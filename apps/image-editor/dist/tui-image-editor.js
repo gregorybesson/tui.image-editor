@@ -43655,7 +43655,7 @@ var parse_float_default = /*#__PURE__*/__webpack_require__.n(parse_float);
       loadButtonStyle = _ref.loadButtonStyle,
       downloadButtonStyle = _ref.downloadButtonStyle,
       submenuStyle = _ref.submenuStyle;
-  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <style>\n      .tui-image-editor-jira, .tui-image-editor-share {\n        transform: translateX(100%);\n        -webkit-transform: translateX(100%);\n        position: absolute;\n        right: 10px;\n        background-color: #fff;\n        width: 500px;\n        height: 100%;\n        z-index: 2;\n        border: 0;\n        transition: transform .5s ease;\n      }\n      \n      .tui-image-editor-jira.show, .tui-image-editor-share.show {\n        transform: translateX(0);\n        -webkit-transform: translateX(0);\n        border-left: black 1px solid;\n      }\n    </style>\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\">\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <h2 id=\"jira-issue\" style=\"display: none; background-color: yellowgreen; width: 100%; padding: 1rem;\">\n                        Issue created: <a id=\"jira-issue-id\" href=\"#\" target=\"_blank\"></a>\n                    </h2>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0; text-align: left;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"10\" cols=\"45\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-share\">\n                <h2>Share</h2>\n                <div> Congratulations! Your image is ready to share: Use the link below to share your screenshot<br/>\n                    CAUTION: This link is public and anyone with the link can view your screenshot. <br/>\n                </div>\n                <div>\n                    <a href=\"#\" id=\"share-link\" target=\"_blank\"></a>\n                </div>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
+  return concat_default()(_context = concat_default()(_context2 = concat_default()(_context3 = concat_default()(_context4 = concat_default()(_context5 = concat_default()(_context6 = concat_default()(_context7 = "\n    <style>\n      .tui-image-editor-jira, .tui-image-editor-share {\n        transform: translateX(100%);\n        -webkit-transform: translateX(100%);\n        position: absolute;\n        right: 10px;\n        background-color: #fff;\n        width: 500px;\n        height: 100%;\n        z-index: 2;\n        border: 0;\n        transition: transform .5s ease;\n      }\n      \n      .tui-image-editor-jira.show, .tui-image-editor-share.show {\n        transform: translateX(0);\n        -webkit-transform: translateX(0);\n        border-left: black 1px solid;\n      }\n    </style>\n    <div class=\"tui-image-editor-main-container\" style=\"".concat(commonStyle, "\">\n        <div class=\"tui-image-editor-header\" style=\"")).call(_context7, headerStyle, "\">\n            <div class=\"tui-image-editor-header-logo\">\n                <img src=\"")).call(_context6, biImage, "\" />\n            </div>\n            <div class=\"tui-image-editor-header-buttons\">\n                <div style=\"")).call(_context5, loadButtonStyle, "\">\n                    ")).call(_context4, locale.localize('Load'), "\n                    <input type=\"file\" class=\"tui-image-editor-load-btn\" />\n                </div>\n                <button class=\"tui-image-editor-download-btn\" style=\"")).call(_context3, downloadButtonStyle, "\">\n                    ")).call(_context2, locale.localize('Download'), "\n                </button>\n            </div>\n        </div>\n        <div class=\"tui-image-editor-main\">\n            <div class=\"tui-image-editor-submenu\" draggable=\"true\" style=\"width: 250px;\">\n                <div class=\"tui-image-editor-submenu-style\" style=\"")).call(_context, submenuStyle, "\"></div>\n            </div>\n            <div class=\"tui-image-editor-jira\">\n                <div id=\"jira-message\" style=\"display: none;\">\n                    You need to configure your Jira connection. It's here:\n                    <img src=\"https://gorira.omnishop.app/gorira/jira-settings.png\" />\n                    <i>(And don't forget to create your Jira token following this link: <a href=\"https://id.atlassian.com/manage-profile/security/api-tokens\">https://id.atlassian.com/manage-profile/security/api-tokens</a>)</i>\n                </div>\n                <form id=\"formJira\" style=\"display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;\">\n                    <input type=\"hidden\" name=\"page-title\" id=\"jira-page-title\"/>\n                    <input type=\"hidden\" name=\"page-url\" id=\"jira-page-url\"/>\n                    <h2 id=\"jira-issue\" style=\"display: none; background-color: yellowgreen; width: 100%; padding: 1rem;\">\n                        Issue created: <a id=\"jira-issue-id\" href=\"#\" target=\"_blank\"></a>\n                    </h2>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jiraProjects\">Project <superscript>*</superscript></label><br/>\n                        <select name=\"key\" id=\"jiraProjects\" style=\"user-select: auto;\" required></select>\n                    </div>\n                    <div class=\"form-check\"><br/>\n                        <input type=\"checkbox\" class=\"form-check-input\" name=\"keep-project\" id=\"keepProjectKey\" checked=\"checked\">\n                        <label class=\"form-check-label\" for=\"keepProjectKey\">Keep this project for this website</label>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0 0; text-align: left;\">\n                        <label for=\"jira-summary\">Summary <superscript>*</superscript></label><br/>\n                        <input type=\"text\" class=\"form-control\" name=\"summary\" id=\"jira-summary\" placeholder=\"Short description\" required><br/>\n                        <small id=\"summaryHelp\" class=\"form-text text-muted\">Enter a short description of your ticket</small>\n                    </div>\n                    <div class=\"form-group\" style=\"padding: 1rem 0; text-align: left;\">\n                        <label for=\"jira-description\">Description <superscript>*</superscript></label><br/>\n                        <textarea class=\"form-control\" name=\"description\" id=\"jira-description\" rows=\"10\" cols=\"45\" style=\"user-select: auto;\" required></textarea><br/>\n                        <small id=\"descriptionHelp\" class=\"form-text text-muted\">try to be specific. Your description will be appended with your screenshot</small>\n                    </div>\n                    <button type=\"submit\" title=\"Create a ticket\" class=\"btn btn-primary share\">Send to Jira</button>\n                </form>\n            </div>\n            <div class=\"tui-image-editor-share\">\n                <h2>Share</h2>\n                <div> Congratulations! Your image is ready to share: Use the link below to share your screenshot<br/>\n                    CAUTION: This link is public and anyone with the link can view your screenshot. <br/>\n                </div>\n                <div>\n                    <a href=\"#\" id=\"share-link\" target=\"_blank\"></a>\n                </div>\n            </div>\n            <div class=\"tui-image-editor-wrap\">\n                <div class=\"tui-image-editor-size-wrap\">\n                    <div class=\"tui-image-editor-align-wrap\">\n                        <div class=\"tui-image-editor\"></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n");
 });
 ;// CONCATENATED MODULE: ./src/js/ui/template/controls.js
 
@@ -51466,7 +51466,7 @@ var ImageTracer = /*#__PURE__*/function () {
                   }
 
                   jiraDiv.classList.remove('show');
-                  _context9.next = 33;
+                  _context9.next = 38;
                   break;
 
                 case 6:
@@ -51482,6 +51482,18 @@ var ImageTracer = /*#__PURE__*/function () {
 
                 case 10:
                   items = _context9.sent;
+
+                  if (!(!items.jiraServer || !items.jiraLogin || !items.jiraPassword)) {
+                    _context9.next = 15;
+                    break;
+                  }
+
+                  document.getElementById('formJira').style.display = 'none';
+                  document.getElementById('jira-message').style.display = 'block';
+                  return _context9.abrupt("return");
+
+                case 15:
+                  document.getElementById('formJira').style.display = 'flex';
                   websiteUrl = document.getElementById('jira-page-url').value;
                   arr = websiteUrl.split('/');
                   websiteHost = concat_default()(_context2 = "".concat(arr[0], "//")).call(_context2, arr[2]);
@@ -51495,7 +51507,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                   user = btoa(concat_default()(_context4 = "".concat(items.jiraLogin, ":")).call(_context4, items.jiraPassword));
                   url = "https://gorira.omnishop.app/projects?host=".concat(items.jiraServer);
-                  _context9.next = 20;
+                  _context9.next = 25;
                   return fetch(url, {
                     method: 'GET',
                     mode: 'cors',
@@ -51505,12 +51517,12 @@ var ImageTracer = /*#__PURE__*/function () {
                     }
                   });
 
-                case 20:
+                case 25:
                   response = _context9.sent;
-                  _context9.next = 23;
+                  _context9.next = 28;
                   return response.json();
 
-                case 23:
+                case 28:
                   projects = _context9.sent;
                   jiraSelect = document.getElementById('jiraProjects');
                   jiraSelect.innerHTML = '';
@@ -51616,7 +51628,7 @@ var ImageTracer = /*#__PURE__*/function () {
 
                   document.getElementById('formJira').addEventListener('submit', createJira, true);
 
-                case 33:
+                case 38:
                 case "end":
                   return _context9.stop();
               }

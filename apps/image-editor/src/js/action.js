@@ -184,6 +184,13 @@ export default {
               jiraPassword: '',
               jiraProjects: [],
             });
+            if (!items.jiraServer || !items.jiraLogin || !items.jiraPassword) {
+              document.getElementById('formJira').style.display = 'none';
+              document.getElementById('jira-message').style.display = 'block';
+
+              return;
+            }
+            document.getElementById('formJira').style.display = 'flex';
             const websiteUrl = document.getElementById('jira-page-url').value;
             const arr = websiteUrl.split('/');
             const websiteHost = `${arr[0]}//${arr[2]}`;

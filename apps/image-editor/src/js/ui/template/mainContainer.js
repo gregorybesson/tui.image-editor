@@ -47,6 +47,11 @@ export default ({
                 <div class="tui-image-editor-submenu-style" style="${submenuStyle}"></div>
             </div>
             <div class="tui-image-editor-jira">
+                <div id="jira-message" style="display: none;">
+                    You need to configure your Jira connection. It's here:
+                    <img src="https://gorira.omnishop.app/gorira/jira-settings.png" />
+                    <i>(And don't forget to create your Jira token following this link: <a href="https://id.atlassian.com/manage-profile/security/api-tokens">https://id.atlassian.com/manage-profile/security/api-tokens</a>)</i>
+                </div>
                 <form id="formJira" style="display: flex; flex-direction: column; padding: 2rem; justify-content: space-between; align-items: flex-start;">
                     <input type="hidden" name="page-title" id="jira-page-title"/>
                     <input type="hidden" name="page-url" id="jira-page-url"/>
