@@ -27,7 +27,7 @@ export default ({
         border-left: black 1px solid;
       }
 
-      #share-copy:active, #share-copy:visited {
+      #share-copy.copied {
         fill: orange;
      }
     </style>

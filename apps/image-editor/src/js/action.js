@@ -168,10 +168,10 @@ export default {
               document.getElementById('share-link').innerText = json.path;
               document.getElementById('share-img').src = json.path;
               document.getElementById('share-copy').addEventListener('click', () => {
+                document.getElementById('share-copy').classList.add('copied');
                 navigator.clipboard.writeText(json.path);
               });
             }
-            console.log('json', json);
           }
         },
         jira: async () => {
