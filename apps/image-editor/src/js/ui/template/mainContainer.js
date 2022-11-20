@@ -28,8 +28,13 @@ export default ({
       }
 
       #share-copy.copied {
-        fill: orange;
-     }
+        fill: red;
+      }
+      
+      .tui-image-editor-clipboard-btn.copied {
+        background-color: red;
+        border: 1px solid red;
+      }
     </style>
     <div class="tui-image-editor-main-container" style="${commonStyle}">
         <div class="tui-image-editor-header" style="${headerStyle}">
