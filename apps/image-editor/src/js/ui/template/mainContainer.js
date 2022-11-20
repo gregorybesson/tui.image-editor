@@ -32,8 +32,8 @@ export default ({
       }
       
       .tui-image-editor-clipboard-btn.copied {
-        background-color: red;
-        border: 1px solid red;
+        background-color: red !important;
+        border: 1px solid red !important;
       }
     </style>
     <div class="tui-image-editor-main-container" style="${commonStyle}">
