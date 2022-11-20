@@ -309,7 +309,8 @@ export default {
           const blob = base64ToBlob(dataURL);
           const { ClipboardItem } = window;
           await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
-          console.log('Image copied.');
+          document.querySelector('.tui-image-editor-clipboard-btn').classList.add('copied');
+          document.querySelector('.tui-image-editor-clipboard-btn').innerHTML = 'Copied!';
         },
         history: (event) => {
           this.ui.toggleHistoryMenu(event);

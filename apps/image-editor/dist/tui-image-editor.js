@@ -51683,9 +51683,10 @@ var ImageTracer = /*#__PURE__*/function () {
                   return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
 
                 case 5:
-                  console.log('Image copied.');
+                  document.querySelector('.tui-image-editor-clipboard-btn').classList.add('copied');
+                  document.querySelector('.tui-image-editor-clipboard-btn').innerHTML = 'Copied!';
 
-                case 6:
+                case 7:
                 case "end":
                   return _context10.stop();
               }
