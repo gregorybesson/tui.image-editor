@@ -26,6 +26,10 @@ export default ({
         -webkit-transform: translateX(0);
         border-left: black 1px solid;
       }
+
+      #share-copy:active, #share-copy:visited {
+        fill: orange;
+     }
     </style>
     <div class="tui-image-editor-main-container" style="${commonStyle}">
         <div class="tui-image-editor-header" style="${headerStyle}">
@@ -89,9 +93,7 @@ export default ({
                     <img id="share-img" src="" style="width:100%;"/>
                 </div>
                 <div style="margin-top: 2rem;">
-                    <a href="#" id="share-link" target="_blank"></a><a id="share-copy" href="#">
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                    <a href="#" id="share-link" target="_blank"></a><a id="share-copy" href="#" style="vertical-align: middle; margin-left: 1rem;" title="copy the link"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20" viewBox="0 0 330 330" xml:space="preserve">
                             <g>
                                 <path d="M35,270h45v45c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V75c0-8.284-6.716-15-15-15h-45V15
                                     c0-8.284-6.716-15-15-15H35c-8.284,0-15,6.716-15,15v240C20,263.284,26.716,270,35,270z M280,300H110V90h170V300z M50,30h170v30H95
